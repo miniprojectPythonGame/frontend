@@ -1,4 +1,20 @@
 # frontend
 - link do dysku na mega.nz z grafikami widoków:
 - https://mega.nz/folder/j5sTCAja#oZAZmq0M22khJkuS0-i3EQ
-![Views](https://github.com/miniprojectPythonGame/.github/blob/main/frontend/images/RPG_views_updated.jpg)
+## Todo
+1) przygotowanie funkcjonalnych ekranów każdego widoku na zmockowanych danych
+  * login screen
+  * register screen
+  * choose character
+  * create character
+  * city map
+  * marketplace
+  * arena list
+  * arena fight
+  * shop (armor, magic, weapon)
+  * character window
+  * choose quest
+  * quest dialog
+  * quest fight
+  * quest reward
+  * end quest
