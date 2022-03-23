@@ -3,8 +3,8 @@
 - https://mega.nz/folder/j5sTCAja#oZAZmq0M22khJkuS0-i3EQ
 ## Todo
 1) przygotowanie funkcjonalnych ekranów każdego widoku na zmockowanych danych
-- [x] ~~ ~~login screen
-- [x] ~~ ~~register screen
+- [x] ~~login screen ~~
+- [x] ~~register screen~~
 - [ ] choose character
 - [ ] create character
 - [ ] city map
