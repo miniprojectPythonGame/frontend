@@ -9,6 +9,11 @@ class Measurements:
     window_height = SCREEN_HEIGHT * size_factor
     margin = round(SCREEN_WIDTH * SIZE_FACTOR * 0.12)
 
+    # LOGO PARAMETERS
+    logo_size_factor = 0.1
+    logo_width = 899 * logo_size_factor
+    logo_height = 318 * logo_size_factor
+
     # FONTS: sizes
     title_font = TITLE_FONT
     header_primary_font = HEADER_PRIMARY_FONT
@@ -20,19 +25,26 @@ class Measurements:
     # FONTS: colors
     text_color = pygame.Color('gray26')
 
-    # left -> right
     # IMAGE: graphic
     graphic = {
-        'x': 0,
+        'x': window_width - round(SCREEN_WIDTH * SIZE_FACTOR * 0.45),
         'y': 0,
         'width': round(SCREEN_WIDTH * SIZE_FACTOR * 0.45),
         'height': round(SCREEN_HEIGHT * SIZE_FACTOR),
     }
 
-    # LABEL: Login
+    # IMAGE: logo
+    logo = {
+        'x': graphic['width'] + 30,
+        'y': 30,
+        'width': logo_width,
+        'height': logo_height,
+    }
+
+    # LABEL: Register
     label_login = {
-        'text': 'Login',
-        'x': SCREEN_WIDTH * SIZE_FACTOR - margin,
+        'text': 'Register',
+        'x': margin + round((SCREEN_WIDTH * SIZE_FACTOR) - (graphic['width'] + 2 * margin)),
         'y': margin - 50,
         'anchor': 'topright',
     }
@@ -40,10 +52,9 @@ class Measurements:
     # MultilineText: Description
     mt_desc = {
         'text': [
-            'Lorem ipsum dolor sit amet, consectetur',
-            'adipiscing elit. Duis porttitor diam tincidunt',
-            'neque viverra blandit.'],
-        'x': SCREEN_WIDTH * SIZE_FACTOR - margin,
+            'Praesent vel tellus accumsan nisl tincidunt.',
+            'Pellentesque ullamcorper venenatis lorem et.',],
+        'x': margin + round((SCREEN_WIDTH * SIZE_FACTOR) - (graphic['width'] + 2 * margin)),
         'y': margin + 30,
         'anchor': 'topright',
     }
@@ -53,64 +64,59 @@ class Measurements:
         "padding": 5,
         "border": 3,
         "color": ColorSchemes(),
-        "x": graphic['width'] + margin,
-        "y": margin + 110,
+        "x": margin,
+        "y": margin + 90,
         "width": round((SCREEN_WIDTH * SIZE_FACTOR) - (graphic['width'] + 2 * margin)),
         "height": 50,
     }
+
+    # INPUT: Email
+    input_email = {
+        "padding": 5,
+        "border": 3,
+        "color": ColorSchemes(),
+        "x": margin,
+        "y": margin + 160,
+        "width": round((SCREEN_WIDTH * SIZE_FACTOR) - (graphic['width'] + 2 * margin)),
+        "height": 50,
+    }
+
 
     # INPUT: Password
     input_pass = {
         "padding": 5,
         "border": 3,
         "color": ColorSchemes(),
-        "x": graphic['width'] + margin,
-        "y": margin + 190,
+        "x": margin,
+        "y": margin + 230,
         "width": round((SCREEN_WIDTH * SIZE_FACTOR) - (graphic['width'] + 2 * margin)),
         "height": 50,
     }
 
-    # Checkbox: remember me
-    cb_remember = {
-        "color": ColorSchemes(),
-        "x": graphic['width'] + margin,
-        "y": margin + 258,
-        "width": 30,
-        "height": 30,
-    }
-
-    # Label: remember me
-    label_remember = {
-        'text': 'Remember me',
-        'x': cb_remember['x'] + cb_remember['width'] + 20,
-        "y": margin + 264,
-        'anchor': 'topleft',
-    }
-
-    # BUTTON: Login
+    # BUTTON: Register
     bt_login = {
         "color": ColorSchemes(),
-        "x": graphic['width'] + margin,
+        "x": margin,
         "y": margin + 305,
         "width": input_pass['width'],
         "height": input_pass['height'],
-        "text": 'Login'
+        "text": 'Register'
     }
 
-    # LABEL: Signup
+    # LABEL: Signin
     label_signup = {
-        'text': 'Need an account?',
-        'x': window_width - margin - 110,
+        'text': 'Already registered?',
+        'x': margin + input_nick['width'] - 120,
         'y': window_height - margin + 8,
         'anchor': 'topright',
     }
 
-    # BUTTON: Signup
+    # BUTTON: Signin
     bt_signup = {
         "color": ColorSchemes(),
-        "x": window_width - margin - 100,
+        'x': margin + input_nick['width'] - 100,
         "y": window_height - margin,
         "width": 100,
         "height": 35,
-        "text": 'Sign up'
+        "text": 'Sign in'
     }

@@ -17,7 +17,11 @@ from .Measurements import Measurements as meas
 def LoginScreen(screen, mainClock):
     image = ImageField(meas.graphic['x'], meas.graphic['y'],
                        meas.graphic['width'], meas.graphic['height'],
-                       '../images/pages/login_screen/image_1.png')
+                       '../images/pages/login_screen/image_1.png', screen)
+
+    # logo = ImageField(meas.logo['x'], meas.logo['y'],
+    #                    meas.logo['width'], meas.logo['height'],
+    #                    '../images/logo.png', screen)
 
     label_login = Label(meas.label_login['text'], meas.title_font, meas.text_color, screen,
                         meas.label_login['x'], meas.label_login['y'], meas.label_login['anchor'])
@@ -58,7 +62,8 @@ def LoginScreen(screen, mainClock):
 
         label_login.draw()
         mt_description.draw()
-        screen.blit(image.image, (image.x, image.y))
+        image.draw()
+        # logo.draw()
 
         input_nickname.draw()
         input_password.draw()
@@ -141,7 +146,7 @@ def LoginScreen(screen, mainClock):
                 if bt_login.rect.collidepoint(event.pos):
                     print("Login: ", input_nickname.text, input_password.text, cb_remember.isSelected)
 
-                 # 'Login' button
+                 # 'Sign up' button
                 if bt_signup.rect.collidepoint(event.pos):
                     print("Redirect-> Register")
                     RegisterScreen(screen, mainClock)

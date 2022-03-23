@@ -9,6 +9,11 @@ class Measurements:
     window_height = SCREEN_HEIGHT * size_factor
     margin = round(SCREEN_WIDTH * SIZE_FACTOR * 0.12)
 
+    # LOGO PARAMETERS
+    logo_size_factor = 0.15
+    logo_width = 899 * logo_size_factor
+    logo_height = 318 * logo_size_factor
+
     # FONTS: sizes
     title_font = TITLE_FONT
     header_primary_font = HEADER_PRIMARY_FONT
@@ -27,6 +32,14 @@ class Measurements:
         'y': 0,
         'width': round(SCREEN_WIDTH * SIZE_FACTOR * 0.45),
         'height': round(SCREEN_HEIGHT * SIZE_FACTOR),
+    }
+
+    # IMAGE: logo
+    logo = {
+        'x': graphic['width'] + 30,
+        'y': 30,
+        'width': logo_width,
+        'height': logo_height,
     }
 
     # LABEL: Login

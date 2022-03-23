@@ -13,11 +13,12 @@ from .Measurements import Measurements as meas
 
 
 def RegisterScreen(screen, mainClock):
+    isRunning = True
     image = ImageField(meas.graphic['x'], meas.graphic['y'],
                        meas.graphic['width'], meas.graphic['height'],
-                       '../images/pages/register_screen/image_1.png')
+                       '../images/pages/register_screen/image_1.png', screen)
 
-    label_login = Label(meas.label_login['text'], meas.title_font, meas.text_color, screen,
+    label_register = Label(meas.label_login['text'], meas.title_font, meas.text_color, screen,
                         meas.label_login['x'], meas.label_login['y'], meas.label_login['anchor'])
 
     mt_description = MultilineText(meas.mt_desc['text'], meas.text_font, meas.text_color,
@@ -29,58 +30,55 @@ def RegisterScreen(screen, mainClock):
                                 meas.input_nick['border'], meas.input_nick['color'],
                                 screen, 'Nickname', 17)
 
+    input_email = InputField(meas.input_email['x'], meas.input_email['y'],
+                                meas.input_email['width'], meas.input_email['height'],
+                                meas.input_email['border'], meas.input_email['color'],
+                                screen, 'Email', 17)
+
     input_password = InputField(meas.input_pass['x'], meas.input_pass['y'],
                                 meas.input_pass['width'], meas.input_pass['height'],
                                 meas.input_pass['border'], meas.input_pass['color'],
                                 screen, 'Password', 17, isPassword=True)
 
-    cb_remember = Checkbox(meas.cb_remember['color'], meas.cb_remember['x'], meas.cb_remember['y'],
-                           meas.cb_remember['width'], meas.cb_remember['height'], screen, 2)
-
-    label_remember = Label(meas.label_remember['text'], meas.header_tertiary_font, meas.text_color, screen,
-                        meas.label_remember['x'], meas.label_remember['y'], meas.label_remember['anchor'])
-
-    bt_login = Button(meas.bt_login['color'], meas.bt_login['x'], meas.bt_login['y'],
+    bt_register = Button(meas.bt_login['color'], meas.bt_login['x'], meas.bt_login['y'],
                       meas.bt_login['width'], meas.bt_login['height'], screen,
                       meas.bt_login['text'], meas.input_font)
 
-    bt_signup = Button(meas.bt_signup['color'], meas.bt_signup['x'], meas.bt_signup['y'],
-                      meas.bt_signup['width'], meas.bt_signup['height'], screen,
-                      meas.bt_signup['text'], meas.header_tertiary_font, border=2)
+    bt_signin = Button(meas.bt_signup['color'], meas.bt_signup['x'], meas.bt_signup['y'],
+                       meas.bt_signup['width'], meas.bt_signup['height'], screen,
+                       meas.bt_signup['text'], meas.header_tertiary_font, border=2)
 
-    label_signup = Label(meas.label_signup['text'], meas.header_tertiary_font, meas.text_color, screen,
-                        meas.label_signup['x'], meas.label_signup['y'], meas.label_signup['anchor'])
+    label_signin = Label(meas.label_signup['text'], meas.header_tertiary_font, meas.text_color, screen,
+                         meas.label_signup['x'], meas.label_signup['y'], meas.label_signup['anchor'])
 
-    while True:
+    while isRunning:
         screen.fill((255, 255, 255))
 
-        label_login.draw()
+        label_register.draw()
         mt_description.draw()
-        screen.blit(image.image, (image.x, image.y))
-
         input_nickname.draw()
         input_password.draw()
-        bt_login.draw()
-        cb_remember.draw()
-        label_remember.draw()
-        label_signup.draw()
-        bt_signup.draw()
+        bt_register.draw()
+        input_email.draw()
+        label_signin.draw()
+        bt_signin.draw()
+        image.draw()
 
         mx, my = pygame.mouse.get_pos()
 
         # HOVERS
-        if bt_login.rect.collidepoint((mx, my)):
-            bt_login.onHoverOn()
+        if bt_register.rect.collidepoint((mx, my)):
+            bt_register.onHoverOn()
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
         else:
-            bt_login.onHoverOff()
+            bt_register.onHoverOff()
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
 
-        if bt_signup.rect.collidepoint((mx, my)):
-            bt_signup.onHoverOn()
+        if bt_signin.rect.collidepoint((mx, my)):
+            bt_signin.onHoverOn()
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
         else:
-            bt_signup.onHoverOff()
+            bt_signin.onHoverOff()
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
 
         # EVENTS
@@ -93,15 +91,27 @@ def RegisterScreen(screen, mainClock):
                     pygame.quit()
                     sys.exit()
 
+                # Key processing for 'Nickname' input
                 if input_nickname.active:
                     if event.key == K_BACKSPACE:
                         input_nickname.subtractText()
                     elif event.key == K_TAB:
                         input_nickname.deactivate()
-                        input_password.activate()
+                        input_email.activate()
                     else:
                         input_nickname.appendText(event.unicode)
 
+                # Key processing for 'Email' input
+                if input_email.active:
+                    if event.key == K_BACKSPACE:
+                        input_email.subtractText()
+                    elif event.key == K_TAB:
+                        input_email.deactivate()
+                        input_password.activate()
+                    else:
+                        input_email.appendText(event.unicode)
+
+                # Key processing for 'Password' input
                 if input_password.active:
                     if event.key == K_BACKSPACE:
                         input_password.subtractText()
@@ -109,7 +119,6 @@ def RegisterScreen(screen, mainClock):
                         input_password.deactivate()
                     else:
                         input_password.appendText(event.unicode)
-
             if event.type == MOUSEBUTTONDOWN:
                 # if event.button == 1:
                 #     click = True
@@ -120,22 +129,26 @@ def RegisterScreen(screen, mainClock):
                 else:
                     input_nickname.deactivate()
 
+                # 'Email' input
+                if input_email.rect.collidepoint(event.pos):
+                    input_email.activate()
+                else:
+                    input_email.deactivate()
+
                 # 'Password' input
                 if input_password.rect.collidepoint(event.pos):
                     input_password.activate()
                 else:
                     input_password.deactivate()
 
-                # 'Remember me' checkbox
-                if cb_remember.rect.collidepoint(event.pos):
-                    if cb_remember.isSelected:
-                        cb_remember.deselect()
-                    else:
-                        cb_remember.select()
-
                 # 'Login' button
-                if bt_login.rect.collidepoint(event.pos):
-                    print("Login: ", input_nickname.text, input_password.text, cb_remember.isSelected)
+                if bt_register.rect.collidepoint(event.pos):
+                    print("Register: ", input_nickname.text, input_email.text, input_password.text)
+
+                # 'Sign in' button
+                if bt_signin.rect.collidepoint(event.pos):
+                    print("Redirect-> Login")
+                    isRunning = False
 
         pygame.display.update()
         mainClock.tick(60)
