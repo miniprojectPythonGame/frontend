@@ -1,0 +1,117 @@
+from src.globals.const_values import *
+from src.components.ColorSchemes import ColorSchemes
+
+
+class Measurements:
+    # WINDOW PARAMETERS
+    size_factor = SIZE_FACTOR
+    window_width = SCREEN_WIDTH * size_factor
+    window_height = SCREEN_HEIGHT * size_factor
+    margin = round(SCREEN_WIDTH * SIZE_FACTOR * 0.12)
+
+    # FONTS: sizes
+    title_font = TITLE_FONT
+    header_primary_font = HEADER_PRIMARY_FONT
+    header_secondary_font = HEADER_SECONDARY_FONT
+    header_tertiary_font = HEADER_TERTIARY_FONT
+    text_font = TEXT_FONT
+    input_font = INPUT_FONT
+
+    # FONTS: colors
+    text_color = pygame.Color('gray26')
+
+    # left -> right
+    # IMAGE: graphic
+    graphic = {
+        'x': 0,
+        'y': 0,
+        'width': round(SCREEN_WIDTH * SIZE_FACTOR * 0.45),
+        'height': round(SCREEN_HEIGHT * SIZE_FACTOR),
+    }
+
+    # LABEL: Login
+    label_login = {
+        'text': 'Login',
+        'x': SCREEN_WIDTH * SIZE_FACTOR - margin,
+        'y': margin - 50,
+        'anchor': 'topright',
+    }
+
+    # MultilineText: Description
+    mt_desc = {
+        'text': [
+            'Lorem ipsum dolor sit amet, consectetur',
+            'adipiscing elit. Duis porttitor diam tincidunt',
+            'neque viverra blandit.'],
+        'x': SCREEN_WIDTH * SIZE_FACTOR - margin,
+        'y': margin + 30,
+        'anchor': 'topright',
+    }
+
+    # INPUT: Nickname
+    input_nick = {
+        "padding": 5,
+        "border": 3,
+        "color": ColorSchemes(),
+        "x": graphic['width'] + margin,
+        "y": margin + 110,
+        "width": round((SCREEN_WIDTH * SIZE_FACTOR) - (graphic['width'] + 2 * margin)),
+        "height": 50,
+    }
+
+    # INPUT: Password
+    input_pass = {
+        "padding": 5,
+        "border": 3,
+        "color": ColorSchemes(),
+        "x": graphic['width'] + margin,
+        "y": margin + 190,
+        "width": round((SCREEN_WIDTH * SIZE_FACTOR) - (graphic['width'] + 2 * margin)),
+        "height": 50,
+    }
+
+    # Checkbox: remember me
+    cb_remember = {
+        "color": ColorSchemes(),
+        "x": graphic['width'] + margin,
+        "y": margin + 258,
+        "width": 30,
+        "height": 30,
+        "border": 2,
+    }
+
+    # Label: remember me
+    label_remember = {
+        'text': 'Remember me',
+        'x': cb_remember['x'] + cb_remember['width'] + 20,
+        "y": margin + 264,
+        'anchor': 'topleft',
+    }
+
+    # BUTTON: Login
+    bt_login = {
+        "color": ColorSchemes(),
+        "x": graphic['width'] + margin,
+        "y": margin + 305,
+        "width": input_pass['width'],
+        "height": input_pass['height'],
+        "text": 'Login'
+    }
+
+    # LABEL: Signup
+    label_signup = {
+        'text': 'Need an account?',
+        'x': window_width - margin - 110,
+        'y': window_height - margin + 8,
+        'anchor': 'topright',
+    }
+
+    # BUTTON: Signup
+    bt_signup = {
+        "color": ColorSchemes(),
+        "x": window_width - margin - 100,
+        "y": window_height - margin,
+        "width": 100,
+        "height": 35,
+        "text": 'Sign up'
+    }
