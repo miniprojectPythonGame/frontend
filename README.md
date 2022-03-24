@@ -1,2 +1,2 @@
 # frontend
-Branch designed for purpouse of connecting backend to frontend in the future.
+Branch designed to connect backend to frontend in the future.
