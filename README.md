@@ -5,7 +5,7 @@
 1) przygotowanie funkcjonalnych ekranów każdego widoku na zmockowanych danych
 - [x] ~~login screen~~
 - [x] ~~register screen~~
-- [ ] choose character
+- [x] ~~choose character~~
 - [ ] create character
 - [ ] city map
 - [ ] marketplace
