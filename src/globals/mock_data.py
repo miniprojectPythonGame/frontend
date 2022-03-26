@@ -7,7 +7,14 @@ character_1 = {
 
 character_2 = {
     'name': 'AdrianPL',
-    'spec': 'Archer',
+    'spec': 'Mage',
     'level': 67,
     'img': '../images/characters/mage_1_rect.png'
+}
+
+createNew = {
+    'name': 'Create',
+    'spec': '',
+    'level': 0,
+    'img': '../images/characters/create_new.png',
 }

@@ -53,8 +53,8 @@ class Measurements:
         'color': text_color,
     }
 
-    # CHARACTER PREVIEW: Character 1
-    cp_character_1 = {
+    # CHARACTER PREVIEW: Main component
+    cp_main = {
         'x': round(window_width/2) - (main_size/2),
         'y': round(window_height/2) - ((main_size + main_bar_height)/2) - 20,
         'width': main_size,
@@ -64,8 +64,8 @@ class Measurements:
         'font': header_tertiary_font,
     }
 
-    # CHARACTER PREVIEW: Character 2
-    cp_character_2 = {
+    # CHARACTER PREVIEW: Left component (if exist)
+    cp_left = {
         'x': ((round(window_width/2) - (secondary_size/2) - margin) - secondary_size)/2 + margin,
         'y': round(window_height/2) - ((secondary_size + secondary_bar_height)/2) - 20,
         'width': secondary_size,
@@ -75,8 +75,8 @@ class Measurements:
         'font': text_font,
     }
 
-    # CHARACTER PREVIEW: Character 3 - create new
-    cp_character_3 = {
+    # CHARACTER PREVIEW: Right component (if exist)
+    cp_right = {
         'x': window_width - ((round(window_width/2) - (secondary_size/2) - margin) - secondary_size)/2 - (secondary_size + margin),
         'y': round(window_height/2) - ((secondary_size + secondary_bar_height)/2) - 20,
         'width': secondary_size,
