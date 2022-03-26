@@ -2,10 +2,13 @@ import pygame
 
 
 class ImageField:
-    def __init__(self, x, y, width, height, path, screen):
+    def __init__(self, x, y, width, height, path,
+            screen, border=0):
         self.x = x
         self.y = y
         self.screen = screen
+        self.border = border
+        self.rect = pygame.Rect(x, y, width, height)
         self.image = pygame.image.load(path).convert_alpha()
         self.scale(width, height)
 

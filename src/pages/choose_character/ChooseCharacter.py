@@ -2,150 +2,16 @@ import pygame
 import sys
 from pygame.locals import *
 
-from src.components.InputField import InputField
-from src.components.ImageField import ImageField
 from src.components.Label import Label
-from src.components.MultilineText import MultilineText
 from src.components.Button import Button
-from src.components.Checkbox import Checkbox
 
+from .CharacterSlider import CharacterSlider
 from .Measurements import Measurements as meas
 from src.globals.mock_data import character_1 as chara_1
 from src.globals.mock_data import character_2 as chara_2
 from src.globals.mock_data import createNew as createNew
 
-
-class CharacterPreview:
-    def __init__(self, x, y, width, height, bar_width, bar_height,
-                 name, class_name, level, imagePath, screen, font):
-        self.x = x
-        self.y = y
-        self.width = width
-        self.height = height
-        self.bar_width = bar_width
-        self.bar_height = bar_height
-        self.name = name
-        self.class_name = class_name
-        self.level = level
-        self.screen = screen
-        self.font = font
-        self.rect = pygame.Rect(x, y, width, height + 2 * bar_height)
-        self.image = ImageField(x, y, width, height, imagePath, screen)
-        self.rect_border = pygame.Rect(x, y, width, height)
-
-        self.rect_name = pygame.Rect(x + round((width - bar_width) / 2),
-                                     y + height - bar_height - 10,
-                                     bar_width, bar_height)
-        self.text_name = self.font.render(self.name, 1, pygame.Color('white'))
-
-        self.rect_class = pygame.Rect(x,
-                                      y + height,
-                                      width, bar_height)
-        self.text_class = self.font.render(self.class_name, 1, pygame.Color('white'))
-
-        self.rect_level = pygame.Rect(x,
-                                      y + height + bar_height,
-                                      width, bar_height)
-        self.text_level = self.font.render('Level ' + str(self.level), 1, pygame.Color('white'))
-
-    def draw(self):
-        self.image.draw()
-        pygame.draw.rect(self.screen, pygame.Color('gray14'), self.rect_border, 3)
-
-        pygame.draw.rect(self.screen, pygame.Color('gray14'), self.rect_name, 0, 7)
-        self.screen.blit(self.text_name,
-                         (
-                             self.x + (self.width - self.bar_width) / 2 + (
-                                         self.bar_width - self.text_name.get_width()) / 2,
-                             self.y + self.height - self.bar_height - 8 + (
-                                     self.bar_height - self.text_name.get_height()) / 2))
-
-        if self.class_name != '':
-            pygame.draw.rect(self.screen, pygame.Color('gray14'), self.rect_class, 0)
-            self.screen.blit(self.text_class,
-                             (self.x + (self.width - self.text_class.get_width()) / 2,
-                              self.y + self.height + (self.bar_height - self.text_class.get_height()) / 2))
-
-            pygame.draw.rect(self.screen, pygame.Color('gray26'), self.rect_level, 0)
-            self.screen.blit(self.text_level,
-                             (self.x + (self.width - self.text_level.get_width()) / 2,
-                              self.y + self.height + self.bar_height + (
-                                      self.bar_height - self.text_level.get_height()) / 2))
-
-
-class CharacterSlider:
-    def __init__(self, characters, screen):
-        self.characters = characters
-        self.curr_index = None
-        self.curr_main = None
-        self.curr_left = None
-        self.curr_right = None
-        self.screen = screen
-        self.initiateIndex()
-        self.loadVisible()
-
-    def initiateIndex(self):
-        if len(self.characters) < 1:
-            print("[ChooseCharacter > CharacterSlider > initiateIndex]: Error")
-
-        if len(self.characters) == 1:
-            self.curr_index = 0
-
-        if len(self.characters) > 1:
-            self.curr_index = 1
-
-    def loadVisible(self):
-        self.curr_main = CharacterPreview(meas.cp_main['x'], meas.cp_main['y'],
-                                          meas.cp_main['width'], meas.cp_main['height'],
-                                          meas.cp_main['bar_width'], meas.cp_main['bar_height'],
-                                          self.characters[self.curr_index]['name'],
-                                          self.characters[self.curr_index]['spec'],
-                                          self.characters[self.curr_index]['level'],
-                                          self.characters[self.curr_index]['img'],
-                                          self.screen, meas.cp_main['font'])
-
-        if self.curr_index - 1 >= 0:
-            self.curr_left = CharacterPreview(meas.cp_left['x'], meas.cp_left['y'],
-                                              meas.cp_left['width'], meas.cp_left['height'],
-                                              meas.cp_left['bar_width'], meas.cp_left['bar_height'],
-                                              self.characters[self.curr_index - 1]['name'],
-                                              self.characters[self.curr_index - 1]['spec'],
-                                              self.characters[self.curr_index - 1]['level'],
-                                              self.characters[self.curr_index - 1]['img'],
-                                              self.screen, meas.cp_left['font'])
-        else:
-            self.curr_left = None
-
-        if self.curr_index + 1 < len(self.characters):
-            self.curr_right = CharacterPreview(meas.cp_right['x'], meas.cp_right['y'],
-                                               meas.cp_right['width'], meas.cp_right['height'],
-                                               meas.cp_right['bar_width'], meas.cp_right['bar_height'],
-                                               self.characters[self.curr_index + 1]['name'],
-                                               self.characters[self.curr_index + 1]['spec'],
-                                               self.characters[self.curr_index + 1]['level'],
-                                               self.characters[self.curr_index + 1]['img'],
-                                               self.screen, meas.cp_right['font'])
-        else:
-            self.curr_right = None
-
-    def draw(self):
-        self.curr_main.draw()
-        if self.curr_left:
-            self.curr_left.draw()
-        if self.curr_right:
-            self.curr_right.draw()
-
-    def swipeLeft(self):
-        print('Prev')
-        if self.curr_index > 0:
-            self.curr_index -= 1
-            self.loadVisible()
-
-    def swipeRight(self):
-        print('Next')
-        if self.curr_index < len(self.characters) - 1:
-            self.curr_index += 1
-            self.loadVisible()
+from src.pages.create_character.CreateCharacter import CreateCharacter
 
 
 def ChooseCharacter(screen, mainClock):
@@ -197,6 +63,10 @@ def ChooseCharacter(screen, mainClock):
                 # 'Next' button
                 if bt_next.rect.collidepoint(event.pos):
                     characters.swipeRight()
+
+                if characters.curr_main.rect.collidepoint(event.pos):
+                    if characters.curr_main.class_name == '':
+                        CreateCharacter(screen, mainClock)
 
         pygame.display.update()
         mainClock.tick(60)

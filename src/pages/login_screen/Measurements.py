@@ -69,7 +69,7 @@ class Measurements:
     # INPUT: Nickname
     input_nick = {
         "padding": 5,
-        "border": 3,
+        "border": 2,
         "color": ColorSchemes(),
         "x": graphic['width'] + margin,
         "y": margin + 110,
@@ -80,7 +80,7 @@ class Measurements:
     # INPUT: Password
     input_pass = {
         "padding": 5,
-        "border": 3,
+        "border": 2,
         "color": ColorSchemes(),
         "x": graphic['width'] + margin,
         "y": margin + 190,

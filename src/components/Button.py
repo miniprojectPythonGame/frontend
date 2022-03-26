@@ -4,7 +4,7 @@ from .ImageField import ImageField
 
 class Button():
     def __init__(self, color, x, y, width, height, screen,
-                 text, font, border=0, path=None):
+                 text='', font=None, border=0, path=None, image_ofset=0, border_radius=0):
         self.colorSchemes = color
         self.color = color.inactive
         self.x = x
@@ -14,13 +14,14 @@ class Button():
         self.screen = screen
         self.text = text
         self.font = font
-        self.image = self.makeImage(path)
+        self.image = self.makeImage(path, image_ofset)
         self.rect = pygame.Rect(x, y, width, height)
         self.border = border
+        self.border_radius = border_radius
 
 
     def draw(self):
-        pygame.draw.rect(self.screen, self.color, self.rect, self.border)
+        pygame.draw.rect(self.screen, self.color, self.rect, self.border, self.border_radius)
 
         if self.text != '':
             if self.border == 0:
@@ -34,9 +35,12 @@ class Button():
         if self.image:
             self.image.draw()
 
-    def makeImage(self, path):
+    def makeImage(self, path, image_ofset):
         if path:
-            return ImageField(self.x, self.y, self.width, self.height, path, self.screen)
+            return ImageField(self.x + image_ofset, self.y + image_ofset,
+                              self.width - 2*image_ofset,
+                              self.height - 2*image_ofset,
+                              path, self.screen)
         else:
             return None
 
