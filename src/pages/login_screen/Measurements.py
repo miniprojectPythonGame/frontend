@@ -9,10 +9,14 @@ class Measurements:
     window_height = SCREEN_HEIGHT * size_factor
     margin = round(SCREEN_WIDTH * SIZE_FACTOR * 0.12)
 
+    # ACCOUNT PROPERTIES
+    nickname_length = NICKNAME_LENGTH
+    password_length = PASSWORD_LENGTH
+
     # LOGO PARAMETERS
-    logo_size_factor = 0.15
-    logo_width = 899 * logo_size_factor
-    logo_height = 318 * logo_size_factor
+    logo_size_factor = 1
+    logo_width = 100 * logo_size_factor
+    logo_height = 37 * logo_size_factor
 
     # FONTS: sizes
     title_font = TITLE_FONT
@@ -30,8 +34,8 @@ class Measurements:
     graphic = {
         'x': 0,
         'y': 0,
-        'width': round(SCREEN_WIDTH * SIZE_FACTOR * 0.45),
-        'height': round(SCREEN_HEIGHT * SIZE_FACTOR),
+        'width': round(window_width * 0.45),
+        'height': round(window_height),
     }
 
     # IMAGE: logo
@@ -45,7 +49,7 @@ class Measurements:
     # LABEL: Login
     label_login = {
         'text': 'Login',
-        'x': SCREEN_WIDTH * SIZE_FACTOR - margin,
+        'x': window_width - margin,
         'y': margin - 50,
         'anchor': 'topright',
     }
@@ -56,9 +60,10 @@ class Measurements:
             'Lorem ipsum dolor sit amet, consectetur',
             'adipiscing elit. Duis porttitor diam tincidunt',
             'neque viverra blandit.'],
-        'x': SCREEN_WIDTH * SIZE_FACTOR - margin,
+        'x': window_width - margin,
         'y': margin + 30,
         'anchor': 'topright',
+        'line_height': 20,
     }
 
     # INPUT: Nickname
@@ -68,7 +73,7 @@ class Measurements:
         "color": ColorSchemes(),
         "x": graphic['width'] + margin,
         "y": margin + 110,
-        "width": round((SCREEN_WIDTH * SIZE_FACTOR) - (graphic['width'] + 2 * margin)),
+        "width": round(window_width - (graphic['width'] + 2 * margin)),
         "height": 50,
     }
 
@@ -79,7 +84,7 @@ class Measurements:
         "color": ColorSchemes(),
         "x": graphic['width'] + margin,
         "y": margin + 190,
-        "width": round((SCREEN_WIDTH * SIZE_FACTOR) - (graphic['width'] + 2 * margin)),
+        "width": round(window_width - (graphic['width'] + 2 * margin)),
         "height": 50,
     }
 

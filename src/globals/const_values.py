@@ -14,3 +14,7 @@ HEADER_SECONDARY_FONT = pygame.font.Font(None, 40)
 HEADER_TERTIARY_FONT = pygame.font.Font(None, 28)
 TEXT_FONT = pygame.font.Font(None, 23)
 INPUT_FONT = pygame.font.Font(None, 30)
+
+# ACCOUNT PROPERTIES
+NICKNAME_LENGTH = 18
+PASSWORD_LENGTH = 26

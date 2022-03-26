@@ -10,35 +10,44 @@ from src.components.Button import Button
 from src.components.Checkbox import Checkbox
 
 from src.pages.register_screen.RegisterScreen import RegisterScreen
+from src.pages.choose_character.ChooseCharacter import ChooseCharacter
 
 from .Measurements import Measurements as meas
 
-
 def LoginScreen(screen, mainClock):
+
+    # Function to validate input on Login
+    def validate():
+        if len(input_nickname.text) < 8:
+            return False
+        if len(input_password.text) < 8:
+            return False
+        return True
+
     image = ImageField(meas.graphic['x'], meas.graphic['y'],
                        meas.graphic['width'], meas.graphic['height'],
                        '../images/pages/login_screen/image_1.png', screen)
 
-    # logo = ImageField(meas.logo['x'], meas.logo['y'],
-    #                    meas.logo['width'], meas.logo['height'],
-    #                    '../images/logo.png', screen)
+    logo = ImageField(meas.logo['x'], meas.logo['y'],
+                       meas.logo['width'], meas.logo['height'],
+                       '../images/logo_100x37.png', screen)
 
     label_login = Label(meas.label_login['text'], meas.title_font, meas.text_color, screen,
                         meas.label_login['x'], meas.label_login['y'], meas.label_login['anchor'])
 
     mt_description = MultilineText(meas.mt_desc['text'], meas.text_font, meas.text_color,
-                                   screen, meas.mt_desc['x'], meas.mt_desc['y'], 20,
-                                   meas.mt_desc['anchor'])
+                                   screen, meas.mt_desc['x'], meas.mt_desc['y'],
+                                   meas.mt_desc['line_height'], meas.mt_desc['anchor'])
 
     input_nickname = InputField(meas.input_nick['x'], meas.input_nick['y'],
                                 meas.input_nick['width'], meas.input_nick['height'],
                                 meas.input_nick['border'], meas.input_nick['color'],
-                                screen, 'Nickname', 17)
+                                screen, 'Nickname', meas.nickname_length)
 
     input_password = InputField(meas.input_pass['x'], meas.input_pass['y'],
                                 meas.input_pass['width'], meas.input_pass['height'],
                                 meas.input_pass['border'], meas.input_pass['color'],
-                                screen, 'Password', 17, isPassword=True)
+                                screen, 'Password', meas.password_length, isPassword=True)
 
     cb_remember = Checkbox(meas.cb_remember['color'], meas.cb_remember['x'], meas.cb_remember['y'],
                            meas.cb_remember['width'], meas.cb_remember['height'], screen, meas.cb_remember['border'])
@@ -63,7 +72,7 @@ def LoginScreen(screen, mainClock):
         label_login.draw()
         mt_description.draw()
         image.draw()
-        # logo.draw()
+        logo.draw()
 
         input_nickname.draw()
         input_password.draw()
@@ -118,7 +127,6 @@ def LoginScreen(screen, mainClock):
                         input_password.deactivate()
                     else:
                         input_password.appendText(event.unicode)
-
             if event.type == MOUSEBUTTONDOWN:
                 # if event.button == 1:
                 #     click = True
@@ -145,6 +153,10 @@ def LoginScreen(screen, mainClock):
                 # 'Login' button
                 if bt_login.rect.collidepoint(event.pos):
                     print("Login: ", input_nickname.text, input_password.text, cb_remember.isSelected)
+
+                    # if validate():
+                    #     ChooseCharacter(screen, mainClock)
+                    ChooseCharacter(screen, mainClock)
 
                  # 'Sign up' button
                 if bt_signup.rect.collidepoint(event.pos):

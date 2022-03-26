@@ -9,10 +9,14 @@ class Measurements:
     window_height = SCREEN_HEIGHT * size_factor
     margin = round(SCREEN_WIDTH * SIZE_FACTOR * 0.12)
 
+    # ACCOUNT PROPERTIES
+    nickname_length = NICKNAME_LENGTH
+    password_length = PASSWORD_LENGTH
+
     # LOGO PARAMETERS
-    logo_size_factor = 0.1
-    logo_width = 899 * logo_size_factor
-    logo_height = 318 * logo_size_factor
+    logo_size_factor = 1
+    logo_width = 100 * logo_size_factor
+    logo_height = 37 * logo_size_factor
 
     # FONTS: sizes
     title_font = TITLE_FONT
@@ -35,7 +39,7 @@ class Measurements:
 
     # IMAGE: logo
     logo = {
-        'x': graphic['width'] + 30,
+        'x': 30,
         'y': 30,
         'width': logo_width,
         'height': logo_height,
@@ -57,6 +61,7 @@ class Measurements:
         'x': margin + round((SCREEN_WIDTH * SIZE_FACTOR) - (graphic['width'] + 2 * margin)),
         'y': margin + 30,
         'anchor': 'topright',
+        'line_height': 20,
     }
 
     # INPUT: Nickname

@@ -13,27 +13,40 @@ from .Measurements import Measurements as meas
 
 
 def RegisterScreen(screen, mainClock):
+
+    # Function to validate input on Login
+    def validate():
+        if len(input_nickname.text) < 8:
+            return False
+        if len(input_password.text) < 8:
+            return False
+        return True
+
     isRunning = True
     image = ImageField(meas.graphic['x'], meas.graphic['y'],
                        meas.graphic['width'], meas.graphic['height'],
                        '../images/pages/register_screen/image_1.png', screen)
 
+    logo = ImageField(meas.logo['x'], meas.logo['y'],
+                       meas.logo['width'], meas.logo['height'],
+                       '../images/logo_100x37.png', screen)
+
     label_register = Label(meas.label_login['text'], meas.title_font, meas.text_color, screen,
                         meas.label_login['x'], meas.label_login['y'], meas.label_login['anchor'])
 
     mt_description = MultilineText(meas.mt_desc['text'], meas.text_font, meas.text_color,
-                                   screen, meas.mt_desc['x'], meas.mt_desc['y'], 20,
-                                   meas.mt_desc['anchor'])
+                                   screen, meas.mt_desc['x'], meas.mt_desc['y'],
+                                   meas.mt_desc['line_height'], meas.mt_desc['anchor'])
 
     input_nickname = InputField(meas.input_nick['x'], meas.input_nick['y'],
                                 meas.input_nick['width'], meas.input_nick['height'],
                                 meas.input_nick['border'], meas.input_nick['color'],
-                                screen, 'Nickname', 17)
+                                screen, 'Nickname', meas.nickname_length)
 
     input_email = InputField(meas.input_email['x'], meas.input_email['y'],
                                 meas.input_email['width'], meas.input_email['height'],
                                 meas.input_email['border'], meas.input_email['color'],
-                                screen, 'Email', 17)
+                                screen, 'Email', meas.password_length)
 
     input_password = InputField(meas.input_pass['x'], meas.input_pass['y'],
                                 meas.input_pass['width'], meas.input_pass['height'],
@@ -54,6 +67,7 @@ def RegisterScreen(screen, mainClock):
     while isRunning:
         screen.fill((255, 255, 255))
 
+        logo.draw()
         label_register.draw()
         mt_description.draw()
         input_nickname.draw()
@@ -144,6 +158,10 @@ def RegisterScreen(screen, mainClock):
                 # 'Login' button
                 if bt_register.rect.collidepoint(event.pos):
                     print("Register: ", input_nickname.text, input_email.text, input_password.text)
+
+                    # Tutaj będzie wysyłanie requesta w celu zarejestrowania
+                    if validate():
+                        pass
 
                 # 'Sign in' button
                 if bt_signin.rect.collidepoint(event.pos):

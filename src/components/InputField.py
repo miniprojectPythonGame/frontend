@@ -21,7 +21,7 @@ class InputField:
         self.text_surface = self.font.render(self.visibleText, True, colors.text_color)
 
     def draw(self):
-        pygame.draw.rect(self.screen, self.color, self.rect, 2)
+        pygame.draw.rect(self.screen, self.color, self.rect, self.border)
         self.text_surface = self.font.render(self.visibleText, True, self.color_text)
         self.screen.blit(self.text_surface, (self.rect.x + 10, self.rect.y + 10))
 
