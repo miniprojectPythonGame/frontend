@@ -1,6 +1,11 @@
 from pyrebase import pyrebase
 from psycopg2 import connect
 
+# Works on Python 3.8.0
+# For pyrebase install use: pip install pyrebase4
+# pip version 22.0.4
+
+
 firebaseConfig = {
     "apiKey": "AIzaSyDVdA0TB-zlPxdkzoh_Gxpynr_koHLWnGc",
     "authDomain": "miniprojectpythongame.firebaseapp.com",
@@ -24,41 +29,53 @@ firebase = pyrebase.initialize_app(firebaseConfig)
 auth = firebase.auth()
 
 
-def login():
-    print("Log in...")
-    email = input("Enter email: ")
-    password = input("Enter password: ")
-    try:
-        login = auth.sign_in_with_email_and_password(email, password)
-        print("Successfully logged in!")
+class User:
+    def __init__(self):
+        self.nick = None
+        self.email = None
+        self.sex = None
+        self.age = None
+        self.UID = None
 
-    except:
-        print("Invalid email or password")
+    def login(self, email, password):
+        try:
+            login = auth.sign_in_with_email_and_password(email, password)
+            conn, cursor = connect_to_db()
+            cursor.execute("SELECT * FROM players WHERE uid = %s;", (login['localId'],))
+            user = cursor.fetchall()[0]
+            self.nick = user[0]
+            self.email = user[1]
+            self.sex = user[2]
+            self.age = user[3]
+            self.UID = user[5]
+            disconnect_from_db(conn, cursor)
 
-    finally:
-        return connect_to_db()
+            print("Successfully logged in!")
+
+        except:
+            print("Invalid email or password")
+
+    def signup(self, email, password, nick, sex, age):
+        try:
+            user = auth.create_user_with_email_and_password(email, password)
+            login = auth.sign_in_with_email_and_password(email, password)
+            self.logout()
+            conn, cursor = connect_to_db()
+
+            cursor.execute("CALL add_player(%s ,%s , %s, %s, %s)", (nick, email, sex, age, login['localId']))
+            conn.commit()
+
+            disconnect_from_db(conn, cursor)
+
+        except:
+            print("Email already exists")
+
+    # TODO may need further implementation
+    def logout(self):
+        auth.current_user = None
 
 
-def signup():
-    print("Sign up...")
-    email = input("Enter email: ")
-    password = input("Enter password: ")
-    try:
-        user = auth.create_user_with_email_and_password(email, password)
-        ask = input("Do you want to login?[y/n]")
-        if ask == 'y':
-            login()
-    except:
-        print("Email already exists")
-    return
-
-# returns status of disconnecting from the db
-# TODO not sure if the line 'auth.current_user = None' is working
-def logout(cursor, conn):
-    auth.current_user = None
-    return disconnect_from_db(cursor, conn)
-
-
+# returns reference to db connection (conn) and the cursor for db which can be used to perform actions in the db
 def connect_to_db():
     conn, cursor = None, None
     try:
@@ -70,13 +87,14 @@ def connect_to_db():
             port=dbConfig.get('port')
         )
         cursor = conn.cursor()
+
     except Exception as error:
         print(error)
     finally:
         return conn, cursor
 
-# returns reference to db connection (conn) and the cursor for db which can be used to perform actions in the db
-def disconnect_from_db(cursor, conn):
+
+def disconnect_from_db(conn, cursor):
     code = None
     try:
         cursor.close()
@@ -88,6 +106,3 @@ def disconnect_from_db(cursor, conn):
     finally:
         return code
 
-if __name__ == "__main__":
-    conn, cursor = login()
-    logout(conn, cursor)
