@@ -51,9 +51,10 @@ class User:
             disconnect_from_db(conn, cursor)
 
             print("Successfully logged in!")
-
+            return True
         except:
             print("Invalid email or password")
+            return False
 
     def signup(self, email, password, nick, sex, age):
         try:
@@ -66,9 +67,10 @@ class User:
             conn.commit()
 
             disconnect_from_db(conn, cursor)
-
+            return True
         except:
             print("Email already exists")
+            return False
 
     # TODO may need further implementation
     def logout(self):
@@ -105,4 +107,3 @@ def disconnect_from_db(conn, cursor):
         code = 1
     finally:
         return code
-

@@ -12,9 +12,13 @@ from src.components.Checkbox import Checkbox
 from src.pages.register_screen.RegisterScreen import RegisterScreen
 from src.pages.choose_character.ChooseCharacter import ChooseCharacter
 
+from src.web.WebService import *
+
 from .Measurements import Measurements as meas
 
 def LoginScreen(screen, mainClock):
+
+    user = User()
 
     # Function to validate input on Login
     def validate():
@@ -153,15 +157,18 @@ def LoginScreen(screen, mainClock):
                 # 'Login' button
                 if bt_login.rect.collidepoint(event.pos):
                     print("Login: ", input_nickname.text, input_password.text, cb_remember.isSelected)
+                    # For tests use:
+                    # login: konto@gmail.com
+                    # password: alamakota
+                    if validate() and user.login(input_nickname.text,input_password.text):
+                        ChooseCharacter(screen, mainClock)
 
-                    # if validate():
-                    #     ChooseCharacter(screen, mainClock)
-                    ChooseCharacter(screen, mainClock)
 
                  # 'Sign up' button
                 if bt_signup.rect.collidepoint(event.pos):
                     print("Redirect-> Register")
                     RegisterScreen(screen, mainClock)
+
 
         pygame.display.update()
         mainClock.tick(60)
