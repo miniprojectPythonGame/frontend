@@ -49,12 +49,6 @@ def CreateCharacter(screen, mainClock):
     label_page = Label(meas.label_page['text'], meas.label_page['font'], meas.label_page['color'], screen,
                        meas.label_page['x'], meas.label_page['y'], meas.label_page['anchor'])
 
-    # cp_createdCharacter = CharacterPreview(meas.cp_createdCharacter['x'], meas.cp_createdCharacter['y'],
-    #                        meas.cp_createdCharacter['width'], meas.cp_createdCharacter['height'],
-    #                        meas.cp_createdCharacter['width']-100, meas.property_bar_height, "None",
-    #                        curr_active.capitalize(), 1, meas.cp_createdCharacter['path'],
-    #                        screen, meas.header_secondary_font)
-
     # NAME SECTION
     label_name = Label(meas.label_name['text'], meas.label_name['font'], meas.label_name['color'], screen,
                        meas.label_name['x'], meas.label_name['y'], meas.label_name['anchor'])

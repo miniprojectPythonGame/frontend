@@ -27,6 +27,7 @@ class CharacterEquipment:
         itembox_size = 110
         itembox_padding = 20
         itembox_offset = 20
+        itembox_border_radius = 5
         property_bar_height = 30
         avatar_size_factor = 0.7
         avatar_width = round(AVATAR_FULL_WIDTH * avatar_size_factor)
@@ -61,52 +62,62 @@ class CharacterEquipment:
         ib_helmet = ItemBox(x,
                             y + itembox_padding,
                             itembox_size, itembox_size, self.screen,
-                            path=EQ_PLACEHOLDERS['helmet'], offset=itembox_offset)
+                            path=EQ_PLACEHOLDERS['helmet'], offset=itembox_offset,
+                            border_radius=itembox_border_radius)
 
         ib_chestplate = ItemBox(x,  # x
                                 y + 2 * itembox_padding + itembox_size,  # y
                                 itembox_size, itembox_size, self.screen,
-                                path=EQ_PLACEHOLDERS['chestplate'], offset=itembox_offset)
+                                path=EQ_PLACEHOLDERS['chestplate'], offset=itembox_offset,
+                                border_radius=itembox_border_radius)
 
         ib_gloves = ItemBox(x,  # x
                             y + 3 * itembox_padding + 2 * itembox_size,  # y
                             itembox_size, itembox_size, self.screen,
-                            path=EQ_PLACEHOLDERS['gloves'], offset=itembox_offset)
+                            path=EQ_PLACEHOLDERS['gloves'], offset=itembox_offset,
+                            border_radius=itembox_border_radius)
 
         ib_boots = ItemBox(x,
                            y + 4 * itembox_padding + 3 * itembox_size,  # y,
                            itembox_size, itembox_size, self.screen,
-                           path=EQ_PLACEHOLDERS['boots'], offset=itembox_offset)
+                           path=EQ_PLACEHOLDERS['boots'], offset=itembox_offset,
+                           border_radius=itembox_border_radius)
 
         ib_belt = ItemBox(x + 2 * itembox_padding + itembox_size + avatar_width,  # x,
                           y + itembox_padding,  # y
                           itembox_size, itembox_size, self.screen,
-                          path=EQ_PLACEHOLDERS['belt'], offset=itembox_offset)
+                          path=EQ_PLACEHOLDERS['belt'], offset=itembox_offset,
+                          border_radius=itembox_border_radius)
 
         ib_necklace = ItemBox(x + 2 * itembox_padding + itembox_size + avatar_width,  # x,
                               y + 2 * itembox_padding + itembox_size,  # y
                               itembox_size, itembox_size, self.screen,
-                              path=EQ_PLACEHOLDERS['necklace'], offset=itembox_offset)
+                              path=EQ_PLACEHOLDERS['necklace'], offset=itembox_offset,
+                              border_radius=itembox_border_radius)
 
         ib_ring = ItemBox(x + 2 * itembox_padding + itembox_size + avatar_width,  # x,
                           y + 3 * itembox_padding + 2 * itembox_size,  # y
                           itembox_size, itembox_size, self.screen,
-                          path=EQ_PLACEHOLDERS['ring'], offset=itembox_offset)
+                          path=EQ_PLACEHOLDERS['ring'], offset=itembox_offset,
+                          border_radius=itembox_border_radius)
 
         ib_artefact = ItemBox(x + 2 * itembox_padding + itembox_size + avatar_width,  # x,
                               y + 4 * itembox_padding + 3 * itembox_size,  # y,
                               itembox_size, itembox_size, self.screen,
-                              path=EQ_PLACEHOLDERS['artefact'], offset=itembox_offset)
+                              path=EQ_PLACEHOLDERS['artefact'], offset=itembox_offset,
+                              border_radius=itembox_border_radius)
 
         ib_sword = ItemBox(x + itembox_size + itembox_padding,  # x
                            y + avatar_height + 2 * itembox_padding + 2 * property_bar_height,  # y
                            itembox_size, itembox_size, self.screen,
-                           path=EQ_PLACEHOLDERS['sword'], offset=itembox_offset)
+                           path=EQ_PLACEHOLDERS['sword'], offset=itembox_offset,
+                           border_radius=itembox_border_radius)
 
         ib_shield = ItemBox(x + itembox_padding + avatar_width,  # x
                             y + avatar_height + 2 * itembox_padding + 2 * property_bar_height,  # y
                             itembox_size, itembox_size, self.screen,
-                            path=EQ_PLACEHOLDERS['shield'], offset=itembox_offset)
+                            path=EQ_PLACEHOLDERS['shield'], offset=itembox_offset,
+                            border_radius=itembox_border_radius)
 
         return {
             "label_name": label_name,

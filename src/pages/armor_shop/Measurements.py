@@ -1,7 +1,7 @@
 import pygame
 
 from src.globals.const_values import *
-from src.globals.mock_data import *
+from src.globals.mock_data import armor_shop, character_2
 from src.components.ColorSchemes import ColorSchemes
 
 
@@ -27,13 +27,34 @@ class Measurements:
     class_button_size = 60
     default_color = ColorSchemes()
 
-    # MAP SIZE
-    img_map = {
-        "x": -60,
-        "y": -270,
-        "width": MAP_WIDTH * MAP_SIZE_FACTOR,
-        "height": MAP_HEIGHT * MAP_SIZE_FACTOR,
-        "img_path": '../images/map.jpg',
+    stock = armor_shop
+    bt_return = BT_RETURN
+
+    # LABEL: Page
+    label_page = {
+        'text': 'Armor shop',
+        'x': margin,
+        'y': 20,
+        'anchor': 'topleft',
+        'font': header_primary_font,
+        'color': text_color,
     }
 
+    # CHARACTER_EQUIPMENT: -//-
+    ce_characterEqPreview = {
+        "x": window_width - 510 - margin,
+        "y": margin - 30,
+        "font": header_tertiary_font,
+        "colors": default_color,
+        "character_ref": character_2,
+    }
 
+    # ITEM_GRID: shop offer
+    ig_items = {
+        "x": margin,
+        "y": margin,
+        "item_size": 80,
+        "item_padding": 10,
+        "cols": 4,
+        "amount": 24,
+    }

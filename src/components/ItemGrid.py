@@ -1,6 +1,7 @@
 import pygame
 
 from .ItemBox import ItemBox
+from .ColorSchemes import ColorSchemes
 
 
 class ItemGrid:
@@ -23,13 +24,31 @@ class ItemGrid:
         backpack = []
         x = self.x
         y = self.y
-        ib_offset = 20
+        ib_offset_placeholder = 20
+        ib_offset_item = 10
+        fill_colors = ColorSchemes()
 
         for i in range(len(self.backpack_ref)):
-            backpack.append(
-                ItemBox(x, y, self.item_size, self.item_size, self.screen,
-                        path=self.backpack_ref[i]['img_path'], offset=ib_offset)
-            )
+            if self.backpack_ref[i]['type'] == 'legendary':
+                backpack.append(
+                    ItemBox(x, y, self.item_size, self.item_size, self.screen,
+                            path=self.backpack_ref[i]['img_path'], offset=ib_offset_item,
+                            fill=fill_colors.legendary, border_radius=5)
+                )
+
+            if self.backpack_ref[i]['type'] == 'epic':
+                backpack.append(
+                    ItemBox(x, y, self.item_size, self.item_size, self.screen,
+                            path=self.backpack_ref[i]['img_path'], offset=ib_offset_item,
+                            fill=fill_colors.epic, border_radius=5)
+                )
+
+            if self.backpack_ref[i]['type'] == 'common':
+                backpack.append(
+                    ItemBox(x, y, self.item_size, self.item_size, self.screen,
+                            path=self.backpack_ref[i]['img_path'], offset=ib_offset_item,
+                            fill=fill_colors.common, border_radius=5)
+                )
 
             if i % self.cols == self.cols - 1:
                 y += self.item_size + self.item_padding
@@ -39,7 +58,10 @@ class ItemGrid:
 
         for i in range(len(self.backpack_ref), self.amount):
             backpack.append(
-                ItemBox(x, y, self.item_size, self.item_size, self.screen, offset=ib_offset)
+                ItemBox(x, y, self.item_size, self.item_size, self.screen,
+                        offset=ib_offset_placeholder, fill=pygame.Color('#dddddd'),
+                        border_radius=5
+                )
             )
 
             if i % self.cols == self.cols - 1:

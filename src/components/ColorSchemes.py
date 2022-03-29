@@ -15,3 +15,6 @@ class ColorSchemes:
         self.black = pygame.Color('black')
         self.level = pygame.Color('#f29f46')
         self.health = pygame.Color('#49a644')
+        self.legendary = pygame.Color('#edc161')
+        self.epic = pygame.Color('#275f8a')
+        self.common = pygame.Color('#95c4b2')
