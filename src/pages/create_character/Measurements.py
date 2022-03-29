@@ -1,6 +1,7 @@
 import pygame
 
 from src.globals.const_values import *
+from src.globals.mock_data import *
 from src.components.ColorSchemes import ColorSchemes
 
 
@@ -35,14 +36,11 @@ class Measurements:
     # CharacterPreview sizes:
     preview_width = 358
     preview_height = 500
+    property_bar_height = 35
 
-    # IMAGE: Avatar preview
-    img_avatarPreview = {
-        'x': window_width - margin - preview_width,
-        'y': margin,
-        'width': preview_width,
-        'height': preview_height,
-    }
+    # Avatar thumbnails
+    thumbnail_size = 90
+    thumbnail_gap = round((round(window_width - (preview_width + 4 * margin)) - 5*thumbnail_size)/4)
 
     # LABEL: Page
     label_page = {
@@ -54,6 +52,37 @@ class Measurements:
         'color': text_color,
     }
 
+    # RIGHT PANEL
+    # IMAGE: Avatar preview
+    img_avatarPreview = {
+        'x': window_width - margin - preview_width,
+        'y': margin,
+        'width': preview_width,
+        'height': preview_height,
+        "path": warrior_avatars[0]['full'],
+    }
+
+    # LABEL: Currently typed name
+    label_curr_name = {
+        'text': 'Name',
+        'x': img_avatarPreview['x'],
+        'y': img_avatarPreview['height'] + img_avatarPreview['y'] - 2 * property_bar_height,
+        'anchor': 'topleft',
+        'font': header_secondary_font,
+        'color': text_color,
+    }
+
+    # LABEL: Currently picked class
+    label_curr_class = {
+        'text': '',
+        'x': img_avatarPreview['x'],
+        'y': img_avatarPreview['height'] + img_avatarPreview['y'] - property_bar_height,
+        'anchor': 'topleft',
+        'font': header_secondary_font,
+        'color': text_color,
+    }
+
+    # LEFT PANEL
     # LABEL: Character name
     label_name = {
         'text': 'Character name',
@@ -73,6 +102,7 @@ class Measurements:
         "y": margin + label_padding,
         "width": round(window_width - (preview_width + 4 * margin)),
         "height": 50,
+        "placeholder": 'Name',
     }
 
     # LABEL: Class
@@ -132,7 +162,6 @@ class Measurements:
         "path_gray": '../images/class_icons/archer_gray.png',
     }
 
-
     # LABEL: Avatar
     label_avatar = {
         'text': 'Avatar',
@@ -142,3 +171,26 @@ class Measurements:
         'font': header_secondary_font,
         'color': text_color,
     }
+
+
+    # IMAGE: Avatar preview
+    images = [
+        {
+            'x': margin,
+            'y': label_avatar['y'] + label_padding,
+            'width': thumbnail_size,
+            'height': thumbnail_size,
+        },
+        {
+            'x': margin + thumbnail_size + thumbnail_gap,
+            'y': label_avatar['y'] + label_padding,
+            'width': thumbnail_size,
+            'height': thumbnail_size,
+        },
+        {
+            'x': margin + 2*thumbnail_size + 2*thumbnail_gap,
+            'y': label_avatar['y'] + label_padding,
+            'width': thumbnail_size,
+            'height': thumbnail_size,
+        }
+    ]

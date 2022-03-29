@@ -1,7 +1,8 @@
 import pygame
 
+
 class Label:
-    def __init__(self, text, font, color, surface, x ,y, anchor="topleft"):
+    def __init__(self, text, font, color, surface, x, y, anchor="topleft"):
         self.x = x
         self.y = y
         self.surface = surface
@@ -12,10 +13,10 @@ class Label:
 
     def setAnchor(self, anchor, x, y):
         if anchor == 'topleft':
-            self.rect.topleft = (x,y)
+            self.rect.topleft = (x, y)
 
         elif anchor == 'topright':
-            self.rect.topright = (x,y)
+            self.rect.topright = (x, y)
 
         else:
             print("Error")

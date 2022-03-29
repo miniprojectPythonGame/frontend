@@ -118,17 +118,12 @@ def LoginScreen(screen, mainClock):
                 if input_nickname.active:
                     if event.key == K_BACKSPACE:
                         input_nickname.subtractText()
-                    elif event.key == K_TAB:
-                        input_nickname.deactivate()
-                        input_password.activate()
                     else:
                         input_nickname.appendText(event.unicode)
 
                 if input_password.active:
                     if event.key == K_BACKSPACE:
                         input_password.subtractText()
-                    elif event.key == K_TAB:
-                        input_password.deactivate()
                     else:
                         input_password.appendText(event.unicode)
             if event.type == MOUSEBUTTONDOWN:
