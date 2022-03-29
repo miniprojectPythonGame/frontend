@@ -12,7 +12,7 @@
 - [ ] arena list
 - [ ] arena fight
 - [ ] shop (armor, magic, weapon)
-- [ ] character window
+- [x] ~~character window~~
 - [ ] choose quest
 - [ ] quest dialog
 - [ ] quest fight
