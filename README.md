@@ -7,7 +7,7 @@
 - [x] ~~register screen~~
 - [x] ~~choose character~~
 - [x] ~~create character~~
-- [ ] city map
+- [x] ~~city map~~
 - [ ] marketplace
 - [ ] arena list
 - [ ] arena fight
