@@ -2,10 +2,10 @@ import pygame
 
 
 class Label:
-    def __init__(self, text, font, color, surface, x, y, anchor="topleft"):
+    def __init__(self, text, font, color, screen, x, y, anchor="topleft"):
         self.x = x
         self.y = y
-        self.surface = surface
+        self.screen = screen
         self.text = text
         self.text_obj = font.render(text, 1, color)
         self.rect = self.text_obj.get_rect()
@@ -22,4 +22,4 @@ class Label:
             print("Error")
 
     def draw(self):
-        self.surface.blit(self.text_obj, self.rect)
+        self.screen.blit(self.text_obj, self.rect)

@@ -34,13 +34,15 @@ class Measurements:
     abt_size = 60
 
     # CharacterPreview sizes:
-    preview_width = 358
-    preview_height = 500
+    preview_size = 358
     property_bar_height = 35
 
     # Avatar thumbnails
     thumbnail_size = 90
-    thumbnail_gap = round((round(window_width - (preview_width + 4 * margin)) - 5*thumbnail_size)/4)
+    thumbnail_gap = round((round(window_width - (preview_size + 4 * margin)) - 5*thumbnail_size)/4)
+
+    # CREATE BUTTON SIZE
+    create_button_size = 60
 
     # LABEL: Page
     label_page = {
@@ -54,19 +56,19 @@ class Measurements:
 
     # RIGHT PANEL
     # IMAGE: Avatar preview
-    img_avatarPreview = {
-        'x': window_width - margin - preview_width,
+    cp_createdCharacter = {
+        'x': window_width - margin - preview_size,
         'y': margin,
-        'width': preview_width,
-        'height': preview_height,
-        "path": warrior_avatars[0]['full'],
+        'width': preview_size,
+        'height': preview_size,
+        "path": warrior_avatars[0]['rect'],
     }
 
     # LABEL: Currently typed name
     label_curr_name = {
         'text': 'Name',
-        'x': img_avatarPreview['x'],
-        'y': img_avatarPreview['height'] + img_avatarPreview['y'] - 2 * property_bar_height,
+        'x': cp_createdCharacter['x'],
+        'y': cp_createdCharacter['height'] + cp_createdCharacter['y'] - 2 * property_bar_height,
         'anchor': 'topleft',
         'font': header_secondary_font,
         'color': text_color,
@@ -75,8 +77,8 @@ class Measurements:
     # LABEL: Currently picked class
     label_curr_class = {
         'text': '',
-        'x': img_avatarPreview['x'],
-        'y': img_avatarPreview['height'] + img_avatarPreview['y'] - property_bar_height,
+        'x': cp_createdCharacter['x'],
+        'y': cp_createdCharacter['height'] + cp_createdCharacter['y'] - property_bar_height,
         'anchor': 'topleft',
         'font': header_secondary_font,
         'color': text_color,
@@ -100,7 +102,7 @@ class Measurements:
         "color": ColorSchemes(),
         "x": margin,
         "y": margin + label_padding,
-        "width": round(window_width - (preview_width + 4 * margin)),
+        "width": round(window_width - (preview_size + 4 * margin)),
         "height": 50,
         "placeholder": 'Name',
     }
@@ -194,3 +196,13 @@ class Measurements:
             'height': thumbnail_size,
         }
     ]
+
+    # BUTTON: Create
+    bt_create = {
+        "color": ColorSchemes(),
+        "x": cp_createdCharacter['x'],
+        "y": window_height - margin - create_button_size,
+        "width": cp_createdCharacter['width'],
+        "height": create_button_size,
+        "text": 'Create'
+    }

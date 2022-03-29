@@ -1,5 +1,5 @@
 from .CharacterPreview import CharacterPreview
-from .Measurements import Measurements as meas
+from src.pages.choose_character.Measurements import Measurements as meas
 
 class CharacterSlider:
     def __init__(self, characters, screen):

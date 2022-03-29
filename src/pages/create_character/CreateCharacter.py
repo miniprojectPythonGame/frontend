@@ -6,7 +6,7 @@ from src.components.Label import Label
 from src.components.ImageField import ImageField
 from src.components.InputField import InputField
 from src.components.Button import Button
-from src.pages.choose_character.CharacterPreview import CharacterPreview
+from src.components.CharacterPreview import CharacterPreview
 
 from .Measurements import Measurements as meas
 from src.globals.mock_data import warrior_avatars, mage_avatars, archer_avatars
@@ -32,33 +32,28 @@ def CreateCharacter(screen, mainClock):
                 temp.append(ImageField(meas.images[i]['x'], meas.images[i]['y'],
                                          meas.images[i]['width'], meas.images[i]['height'],
                                          archer_avatars[i]['rect'], screen))
+
         return temp
 
-    def reloadPreviewBars(name, className):
-        temp_name = Label(name, meas.label_curr_name['font'],
-                                meas.label_curr_name['color'], screen,
-                                meas.label_curr_name['x'], meas.label_curr_name['y'], meas.label_curr_name['anchor'])
+    def reloadPreviewBars(name, className, path):
+        return CharacterPreview(meas.cp_createdCharacter['x'], meas.cp_createdCharacter['y'],
+                           meas.cp_createdCharacter['width'], meas.cp_createdCharacter['height'],
+                           meas.cp_createdCharacter['width']-80, meas.property_bar_height, name,
+                           className.capitalize(), 1, path,
+                           screen, meas.header_secondary_font)
 
-        temp_class = Label(className.capitalize(), meas.label_curr_class['font'],
-                                 meas.label_curr_class['color'], screen,
-                                 meas.label_curr_class['x'], meas.label_curr_class['y'],
-                                 meas.label_curr_class['anchor'])
-        return temp_name, temp_class
-
+    running = True
     curr_active = 'warrior'
+    curr_avatarImage = warrior_avatars[0]['rect']
 
     label_page = Label(meas.label_page['text'], meas.label_page['font'], meas.label_page['color'], screen,
                        meas.label_page['x'], meas.label_page['y'], meas.label_page['anchor'])
 
-    img_avatarPreview = ImageField(meas.img_avatarPreview['x'], meas.img_avatarPreview['y'],
-                                   meas.img_avatarPreview['width'], meas.img_avatarPreview['height'],
-                                   meas.img_avatarPreview['path'], screen)
-
-    cos = CharacterPreview(meas.img_avatarPreview['x'], meas.img_avatarPreview['y'],
-                           meas.img_avatarPreview['width'], meas.img_avatarPreview['height'],
-                           meas.img_avatarPreview['width']-100, meas.property_bar_height, "None",
-                           curr_active.capitalize(), 1, meas.img_avatarPreview['path'],
-                           screen, meas.header_secondary_font)
+    # cp_createdCharacter = CharacterPreview(meas.cp_createdCharacter['x'], meas.cp_createdCharacter['y'],
+    #                        meas.cp_createdCharacter['width'], meas.cp_createdCharacter['height'],
+    #                        meas.cp_createdCharacter['width']-100, meas.property_bar_height, "None",
+    #                        curr_active.capitalize(), 1, meas.cp_createdCharacter['path'],
+    #                        screen, meas.header_secondary_font)
 
     # NAME SECTION
     label_name = Label(meas.label_name['text'], meas.label_name['font'], meas.label_name['color'], screen,
@@ -125,29 +120,16 @@ def CreateCharacter(screen, mainClock):
     label_avatar = Label(meas.label_avatar['text'], meas.label_avatar['font'], meas.label_avatar['color'], screen,
                          meas.label_avatar['x'], meas.label_avatar['y'], meas.label_avatar['anchor'])
 
-    # PREVIEW BARS SECTION
-    label_curr_name, label_curr_class = reloadPreviewBars(input_name.text, curr_active)
-    # label_curr_name = Label(meas.label_curr_name['text'], meas.label_curr_name['font'], meas.label_curr_name['color'], screen,
-    #                    meas.label_curr_name['x'], meas.label_curr_name['y'], meas.label_curr_name['anchor'])
-    #
-    # label_curr_class = Label(curr_active.capitalize(), meas.label_curr_class['font'], meas.label_curr_class['color'], screen,
-    #                    meas.label_curr_class['x'], meas.label_curr_class['y'], meas.label_curr_class['anchor'])
+    bt_create = Button(meas.bt_create['color'], meas.bt_create['x'], meas.bt_create['y'],
+                      meas.bt_create['width'], meas.bt_create['height'], screen,
+                      meas.bt_create['text'], meas.input_font)
 
-    images = generateAvatarsOfCurrentClass(curr_active)
-
-    while True:
+    while running:
         screen.fill((255, 255, 255))
 
         pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
 
         label_page.draw()
-
-        # img_avatarPreview.draw()
-        cos.draw()
-
-        label_curr_name, label_curr_class = reloadPreviewBars(input_name.text, curr_active)
-        label_curr_name.draw()
-        label_curr_class.draw()
 
         label_name.draw()
         input_name.draw()
@@ -172,6 +154,11 @@ def CreateCharacter(screen, mainClock):
         images = generateAvatarsOfCurrentClass(curr_active)
         for image in images:
             image.draw()
+
+        cp_createdCharacter = reloadPreviewBars(input_name.text, curr_active, curr_avatarImage)
+        cp_createdCharacter.draw()
+
+        bt_create.draw()
 
         mx, my = pygame.mouse.get_pos()
 
@@ -201,17 +188,28 @@ def CreateCharacter(screen, mainClock):
                 # Pick 'warrior' class
                 if bt_warrior_inactive.rect.collidepoint(event.pos):
                     curr_active = 'warrior'
+                    curr_avatarImage = warrior_avatars[0]['rect']
                     print(curr_active)
 
                 # Pick 'mage' class
                 if bt_mage_inactive.rect.collidepoint(event.pos):
                     curr_active = 'mage'
+                    curr_avatarImage = mage_avatars[0]['rect']
                     print(curr_active)
 
                 # Pick 'archer' class
                 if bt_archer_inactive.rect.collidepoint(event.pos):
                     curr_active = 'archer'
+                    curr_avatarImage = archer_avatars[0]['rect']
                     print(curr_active)
+
+                for image in images:
+                    if image.rect.collidepoint(event.pos):
+                        curr_avatarImage = image.path
+
+                if bt_create.rect.collidepoint(event.pos):
+                    running = False
+                    print("Redirecting: CreateCharacter.py -> ChooseCharacter.py")
 
 
         pygame.display.update()

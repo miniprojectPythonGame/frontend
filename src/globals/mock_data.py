@@ -9,7 +9,20 @@ character_2 = {
     'name': 'AdrianPL',
     'spec': 'Mage',
     'level': 67,
-    'img': '../images/characters/mage_1_rect.jpg'
+    'img': '../images/characters/mage_1_rect.jpg',
+    'img_full': "../images/characters/mage_1.jpg",
+    "health": 120,
+    "eq": {
+        "helmet": None,
+        "chestplate": None,
+        "gloves": None,
+        "boots": None,
+        "necklace": None,
+        "belt": None,
+        "ring": None,
+        "artefact": None,
+    },
+    "backpack": [],
 }
 
 createNew = {

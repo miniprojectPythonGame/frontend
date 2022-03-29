@@ -5,13 +5,14 @@ from pygame.locals import *
 from src.components.Label import Label
 from src.components.Button import Button
 
-from .CharacterSlider import CharacterSlider
+from src.components.CharacterSlider import CharacterSlider
 from .Measurements import Measurements as meas
 from src.globals.mock_data import character_1 as chara_1
 from src.globals.mock_data import character_2 as chara_2
 from src.globals.mock_data import createNew as createNew
 
 from src.pages.create_character.CreateCharacter import CreateCharacter
+from src.pages.city_map.CityMap import CityMap
 
 
 def ChooseCharacter(screen, mainClock):
@@ -67,6 +68,8 @@ def ChooseCharacter(screen, mainClock):
                 if characters.curr_main.rect.collidepoint(event.pos):
                     if characters.curr_main.class_name == '':
                         CreateCharacter(screen, mainClock)
+                    else:
+                        CityMap(screen, mainClock)
 
         pygame.display.update()
         mainClock.tick(60)
