@@ -10,11 +10,10 @@
 - [x] ~~city map~~
 - [ ] marketplace
 - [ ] arena list
-- [ ] arena fight
+- [ ] fight (arena, quest)
 - [ ] shop (armor, magic, weapon)
 - [x] ~~character window~~
 - [ ] choose quest
 - [ ] quest dialog
-- [ ] quest fight
 - [ ] quest reward
 - [ ] end quest
