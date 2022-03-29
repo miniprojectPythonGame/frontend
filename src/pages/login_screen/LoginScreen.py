@@ -11,22 +11,22 @@ from src.components.Checkbox import Checkbox
 
 from src.pages.register_screen.RegisterScreen import RegisterScreen
 from src.pages.choose_character.ChooseCharacter import ChooseCharacter
-
-from src.web.WebService import *
+#
+# from src.web.WebService import *
 
 from .Measurements import Measurements as meas
 
 def LoginScreen(screen, mainClock):
-
-    user = User()
+    #
+    # user = User()
 
     # Function to validate input on Login
-    def validate():
-        if len(input_nickname.text) < 8:
-            return False
-        if len(input_password.text) < 8:
-            return False
-        return True
+    # def validate():
+    #     if len(input_nickname.text) < 8:
+    #         return False
+    #     if len(input_password.text) < 8:
+    #         return False
+    #     return True
 
     image = ImageField(meas.graphic['x'], meas.graphic['y'],
                        meas.graphic['width'], meas.graphic['height'],
@@ -155,8 +155,8 @@ def LoginScreen(screen, mainClock):
                     # For tests use:
                     # login: konto@gmail.com
                     # password: alamakota
-                    if validate() and user.login(input_nickname.text,input_password.text):
-                        ChooseCharacter(screen, mainClock)
+                    # if validate() and user.login(input_nickname.text,input_password.text):
+                    ChooseCharacter(screen, mainClock)
 
 
                  # 'Sign up' button
