@@ -13,7 +13,7 @@ def getWindowSize():
 mainClock = pygame.time.Clock()
 pygame.init()
 pygame.display.set_caption("Heroic: Login screen")
-programIcon = pygame.image.load('../images/icons/helmet.png')
+programIcon = pygame.image.load('../images/icon.png')
 pygame.display.set_icon(programIcon)
 screen = pygame.display.set_mode(getWindowSize(), 0, 32)
 base_font = pygame.font.Font(None, 32)

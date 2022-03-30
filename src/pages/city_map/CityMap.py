@@ -10,6 +10,9 @@ from .Measurements import Measurements as meas
 from src.pages.character_profile.CharacterProfile import CharacterProfile
 from src.pages.settings.Settings import Settings
 from src.pages.armor_shop.ArmorShop import ArmorShop
+from src.pages.magic_shop.MagicShop import MagicShop
+from src.pages.weapon_shop.WeaponShop import WeaponShop
+from src.pages.quests.Tavern import Tavern
 
 
 def CityMap(screen, mainClock):
@@ -113,6 +116,18 @@ def CityMap(screen, mainClock):
                     if bt_armorShop.rect.collidepoint(event.pos):
                         print("Redirecting: CityMap.py -> ArmorShop.py")
                         ArmorShop(screen, mainClock)
+
+                    if bt_magicShop.rect.collidepoint(event.pos):
+                        print("Redirecting: CityMap.py -> MagicShop.py")
+                        MagicShop(screen, mainClock)
+
+                    if bt_weaponShop.rect.collidepoint(event.pos):
+                        print("Redirecting: CityMap.py -> WeaponShop.py")
+                        WeaponShop(screen, mainClock)
+
+                    if bt_tavern.rect.collidepoint(event.pos):
+                        print("Redirecting: CityMap.py -> Tavern.py")
+                        Tavern(screen, mainClock)
 
                 # RIGHT CLICK
 

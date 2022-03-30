@@ -1,6 +1,7 @@
 import pygame
 
 from src.globals.const_values import *
+from src.globals.mock_data import armor_shop
 from src.components.ColorSchemes import ColorSchemes
 
 
@@ -25,13 +26,14 @@ class Measurements:
     label_padding = 35
     category_button_size = 60
     category_button_padding = 20
+
     default_color = ColorSchemes()
 
     bt_return = BT_RETURN
 
     # LABEL: Page
     label_page = {
-        'text': 'Armor shop',
+        'text': 'Weapon shop',
         'x': margin,
         'y': 20,
         'anchor': 'topleft',
@@ -83,53 +85,53 @@ class Measurements:
     }
 
     # BUTTON: Show helmets in offer
-    bt_showHelmets = {
+    bt_showSwords = {
         "x": margin,
         "y": margin,
         "width": category_button_size,
         "height": category_button_size,
-        "path_white": '../images/item_type_icons/armor/helmet_white.png',
-        "path_gray": '../images/item_type_icons/armor/helmet_gray.png',
+        "path_white": '../images/item_type_icons/weapon/sword_white.png',
+        "path_gray": '../images/item_type_icons/weapon/sword_gray.png',
     }
 
     # BUTTON: Show chestplates in offer
-    bt_showChestplates = {
+    bt_showShields = {
         "x": margin + category_button_padding + category_button_size,
         "y": margin,
         "width": category_button_size,
         "height": category_button_size,
-        "path_white": '../images/item_type_icons/armor/chestplate_white.png',
-        "path_gray": '../images/item_type_icons/armor/chestplate_gray.png',
+        "path_white": '../images/item_type_icons/weapon/shield_white.png',
+        "path_gray": '../images/item_type_icons/weapon/shield_gray.png',
     }
 
     # BUTTON: Show gloves in offer
-    bt_showGloves = {
+    bt_showHammers = {
         "x": margin + 2*category_button_padding + 2*category_button_size,
         "y": margin,
         "width": category_button_size,
         "height": category_button_size,
-        "path_white": '../images/item_type_icons/armor/gloves_white.png',
-        "path_gray": '../images/item_type_icons/armor/gloves_gray.png',
+        "path_white": '../images/item_type_icons/weapon/hammer_white.png',
+        "path_gray": '../images/item_type_icons/weapon/hammer_gray.png',
     }
 
     # BUTTON: Show boots in offer
-    bt_showBoots = {
+    bt_showBows = {
         "x": margin + 3*category_button_padding + 3*category_button_size,
         "y": margin,
         "width": category_button_size,
         "height": category_button_size,
-        "path_white": '../images/item_type_icons/armor/boots_white.png',
-        "path_gray": '../images/item_type_icons/armor/boots_gray.png',
+        "path_white": '../images/item_type_icons/weapon/bow_white.png',
+        "path_gray": '../images/item_type_icons/weapon/bow_gray.png',
     }
 
     # BUTTON: Show belts in offer
-    bt_showBelts = {
+    bt_showDaggers = {
         "x": margin + 4*category_button_padding + 4*category_button_size,
         "y": margin,
         "width": category_button_size,
         "height": category_button_size,
-        "path_white": '../images/item_type_icons/armor/belt_white.png',
-        "path_gray": '../images/item_type_icons/armor/belt_gray.png',
+        "path_white": '../images/item_type_icons/weapon/dagger_white.png',
+        "path_gray": '../images/item_type_icons/weapon/dagger_gray.png',
     }
 
     # LABEL: Gold

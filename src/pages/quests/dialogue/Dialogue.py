@@ -13,7 +13,7 @@ from .Measurements import Measurements as meas
 from src.globals.mock_data import armor_shop, character_2
 
 
-def ArmorShop(screen, mainClock):
+def Dialogue(screen, mainClock):
 
     def reloadButtons(buttons_list, current_active):
         newButtons = []

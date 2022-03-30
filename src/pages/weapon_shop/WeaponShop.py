@@ -10,10 +10,10 @@ from src.components.Scrollbar import Scrollbar
 
 from .Measurements import Measurements as meas
 
-from src.globals.mock_data import armor_shop, character_2
+from src.globals.mock_data import weapon_shop, character_2
 
 
-def ArmorShop(screen, mainClock):
+def WeaponShop(screen, mainClock):
 
     def reloadButtons(buttons_list, current_active):
         newButtons = []
@@ -40,11 +40,11 @@ def ArmorShop(screen, mainClock):
         return ItemGrid(meas.ig_items['x'], meas.ig_items['y'],
                         meas.ig_items['item_size'], meas.ig_items['item_padding'],
                         meas.ig_items['cols'], meas.ig_items['amount'],
-                        screen, armor_shop[category_active])
+                        screen, weapon_shop[category_active])
 
     showHand = False
     isRunning = True
-    category_active = 'helmets'
+    category_active = 'swords'
 
 
     label_page = Label(meas.label_page['text'], meas.label_page['font'], meas.label_page['color'], screen,
@@ -54,38 +54,38 @@ def ArmorShop(screen, mainClock):
                        meas.bt_return['width'], meas.bt_return['height'], screen,
                        path=meas.bt_return['path'])
 
-    bt_showHelmets = Button(meas.bt_class_active['color'],
-                        meas.bt_showHelmets['x'], meas.bt_showHelmets['y'],
-                        meas.bt_showHelmets['width'], meas.bt_showHelmets['height'], screen,
-                        path=meas.bt_showHelmets['path_white'],
+    bt_showSwords = Button(meas.bt_class_active['color'],
+                        meas.bt_showSwords['x'], meas.bt_showSwords['y'],
+                        meas.bt_showSwords['width'], meas.bt_showSwords['height'], screen,
+                        path=meas.bt_showSwords['path_white'],
                         image_ofset=meas.bt_class_active['image_offset'],
                         border_radius=meas.bt_class_active['border_radius'])
 
-    bt_showChestplates = Button(meas.bt_class_inactive['color'],
-                        meas.bt_showChestplates['x'], meas.bt_showChestplates['y'],
-                        meas.bt_showChestplates['width'], meas.bt_showChestplates['height'], screen,
-                        path=meas.bt_showChestplates['path_white'],
+    bt_showShields = Button(meas.bt_class_inactive['color'],
+                        meas.bt_showShields['x'], meas.bt_showShields['y'],
+                        meas.bt_showShields['width'], meas.bt_showShields['height'], screen,
+                        path=meas.bt_showShields['path_white'],
                         image_ofset=meas.bt_class_inactive['image_offset'],
                         border_radius=meas.bt_class_inactive['border_radius'])
 
-    bt_showGloves = Button(meas.bt_class_inactive['color'],
-                        meas.bt_showGloves['x'], meas.bt_showGloves['y'],
-                        meas.bt_showGloves['width'], meas.bt_showGloves['height'], screen,
-                        path=meas.bt_showGloves['path_white'],
+    bt_showHammers = Button(meas.bt_class_inactive['color'],
+                        meas.bt_showHammers['x'], meas.bt_showHammers['y'],
+                        meas.bt_showHammers['width'], meas.bt_showHammers['height'], screen,
+                        path=meas.bt_showHammers['path_white'],
                         image_ofset=meas.bt_class_inactive['image_offset'],
                         border_radius=meas.bt_class_inactive['border_radius'])
 
-    bt_showBoots = Button(meas.bt_class_inactive['color'],
-                        meas.bt_showBoots['x'], meas.bt_showBoots['y'],
-                        meas.bt_showBoots['width'], meas.bt_showBoots['height'], screen,
-                        path=meas.bt_showBoots['path_white'],
+    bt_showBows = Button(meas.bt_class_inactive['color'],
+                        meas.bt_showBows['x'], meas.bt_showBows['y'],
+                        meas.bt_showBows['width'], meas.bt_showBows['height'], screen,
+                        path=meas.bt_showBows['path_white'],
                         image_ofset=meas.bt_class_inactive['image_offset'],
                         border_radius=meas.bt_class_inactive['border_radius'])
 
-    bt_showBelts = Button(meas.bt_class_inactive['color'],
-                        meas.bt_showBelts['x'], meas.bt_showBelts['y'],
-                        meas.bt_showBelts['width'], meas.bt_showBelts['height'], screen,
-                        path=meas.bt_showBelts['path_white'],
+    bt_showDaggers = Button(meas.bt_class_inactive['color'],
+                        meas.bt_showDaggers['x'], meas.bt_showDaggers['y'],
+                        meas.bt_showDaggers['width'], meas.bt_showDaggers['height'], screen,
+                        path=meas.bt_showDaggers['path_white'],
                         image_ofset=meas.bt_class_inactive['image_offset'],
                         border_radius=meas.bt_class_inactive['border_radius'])
 
@@ -107,16 +107,16 @@ def ArmorShop(screen, mainClock):
                        meas.label_gold['y'], meas.label_gold['anchor'])
 
     category_buttons = [
-        ('helmets', meas.bt_showHelmets['path_white'],
-            meas.bt_showHelmets['path_gray'], bt_showHelmets),
-        ('chestplates', meas.bt_showChestplates['path_white'],
-            meas.bt_showChestplates['path_gray'], bt_showChestplates),
-        ('gloves', meas.bt_showGloves['path_white'],
-            meas.bt_showGloves['path_gray'], bt_showGloves),
-        ('boots', meas.bt_showBoots['path_white'],
-            meas.bt_showBoots['path_gray'], bt_showBoots),
-        ('belts', meas.bt_showBelts['path_white'],
-            meas.bt_showBelts['path_gray'], bt_showBelts),
+        ('swords', meas.bt_showSwords['path_white'],
+            meas.bt_showSwords['path_gray'], bt_showSwords),
+        ('shields', meas.bt_showShields['path_white'],
+            meas.bt_showShields['path_gray'], bt_showShields),
+        ('hammers', meas.bt_showHammers['path_white'],
+            meas.bt_showHammers['path_gray'], bt_showHammers),
+        ('bows', meas.bt_showBows['path_white'],
+            meas.bt_showBows['path_gray'], bt_showBows),
+        ('daggers', meas.bt_showDaggers['path_white'],
+            meas.bt_showDaggers['path_gray'], bt_showDaggers),
     ]
 
     displayedContent = [

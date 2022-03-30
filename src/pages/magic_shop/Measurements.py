@@ -1,6 +1,7 @@
 import pygame
 
 from src.globals.const_values import *
+from src.globals.mock_data import armor_shop
 from src.components.ColorSchemes import ColorSchemes
 
 
@@ -25,13 +26,15 @@ class Measurements:
     label_padding = 35
     category_button_size = 60
     category_button_padding = 20
+    magic_shop_category_offset = round(2.3*category_button_padding) + category_button_size
+
     default_color = ColorSchemes()
 
     bt_return = BT_RETURN
 
     # LABEL: Page
     label_page = {
-        'text': 'Armor shop',
+        'text': 'Magic shop',
         'x': margin,
         'y': 20,
         'anchor': 'topleft',
@@ -82,54 +85,44 @@ class Measurements:
         "image_offset": 5,
     }
 
-    # BUTTON: Show helmets in offer
-    bt_showHelmets = {
+    # BUTTON: Show potions in offer
+    bt_showPotions = {
         "x": margin,
         "y": margin,
         "width": category_button_size,
         "height": category_button_size,
-        "path_white": '../images/item_type_icons/armor/helmet_white.png',
-        "path_gray": '../images/item_type_icons/armor/helmet_gray.png',
+        "path_white": '../images/item_type_icons/magic/potion_white.png',
+        "path_gray": '../images/item_type_icons/magic/potion_gray.png',
     }
 
-    # BUTTON: Show chestplates in offer
-    bt_showChestplates = {
-        "x": margin + category_button_padding + category_button_size,
+    # BUTTON: Show rings in offer
+    bt_showRings = {
+        "x": bt_showPotions['x'] + magic_shop_category_offset,
         "y": margin,
         "width": category_button_size,
         "height": category_button_size,
-        "path_white": '../images/item_type_icons/armor/chestplate_white.png',
-        "path_gray": '../images/item_type_icons/armor/chestplate_gray.png',
+        "path_white": '../images/item_type_icons/magic/ring_white.png',
+        "path_gray": '../images/item_type_icons/magic/ring_gray.png',
     }
 
-    # BUTTON: Show gloves in offer
-    bt_showGloves = {
-        "x": margin + 2*category_button_padding + 2*category_button_size,
+    # BUTTON: Show necklaces in offer
+    bt_showNecklaces = {
+        "x": bt_showRings['x'] + magic_shop_category_offset,
         "y": margin,
         "width": category_button_size,
         "height": category_button_size,
-        "path_white": '../images/item_type_icons/armor/gloves_white.png',
-        "path_gray": '../images/item_type_icons/armor/gloves_gray.png',
+        "path_white": '../images/item_type_icons/magic/necklace_white.png',
+        "path_gray": '../images/item_type_icons/magic/necklace_gray.png',
     }
 
-    # BUTTON: Show boots in offer
-    bt_showBoots = {
-        "x": margin + 3*category_button_padding + 3*category_button_size,
+    # BUTTON: Show sceptres in offer
+    bt_showSceptres = {
+        "x": bt_showNecklaces['x'] + magic_shop_category_offset,
         "y": margin,
         "width": category_button_size,
         "height": category_button_size,
-        "path_white": '../images/item_type_icons/armor/boots_white.png',
-        "path_gray": '../images/item_type_icons/armor/boots_gray.png',
-    }
-
-    # BUTTON: Show belts in offer
-    bt_showBelts = {
-        "x": margin + 4*category_button_padding + 4*category_button_size,
-        "y": margin,
-        "width": category_button_size,
-        "height": category_button_size,
-        "path_white": '../images/item_type_icons/armor/belt_white.png',
-        "path_gray": '../images/item_type_icons/armor/belt_gray.png',
+        "path_white": '../images/item_type_icons/magic/sceptre_white.png',
+        "path_gray": '../images/item_type_icons/magic/sceptre_gray.png',
     }
 
     # LABEL: Gold

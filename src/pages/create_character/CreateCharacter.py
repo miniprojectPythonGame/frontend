@@ -65,7 +65,6 @@ def CreateCharacter(screen, mainClock):
     bt_warrior_active = Button(meas.bt_class_active['color'],
                         meas.bt_warrior['x'], meas.bt_warrior['y'],
                         meas.bt_warrior['width'], meas.bt_warrior['height'], screen,
-                        meas.bt_warrior['text'],
                         path=meas.bt_warrior['path_white'],
                         image_ofset=meas.bt_class_active['image_offset'],
                         border_radius=meas.bt_class_active['border_radius'])
@@ -73,7 +72,6 @@ def CreateCharacter(screen, mainClock):
     bt_warrior_inactive = Button(meas.bt_class_inactive['color'],
                         meas.bt_warrior['x'], meas.bt_warrior['y'],
                         meas.bt_warrior['width'], meas.bt_warrior['height'], screen,
-                        meas.bt_warrior['text'],
                         path=meas.bt_warrior['path_gray'],
                         image_ofset=meas.bt_class_inactive['image_offset'],
                         border_radius=meas.bt_class_inactive['border_radius'])
@@ -81,7 +79,6 @@ def CreateCharacter(screen, mainClock):
     bt_mage_active = Button(meas.bt_class_active['color'],
                      meas.bt_mage['x'], meas.bt_mage['y'],
                      meas.bt_mage['width'], meas.bt_mage['height'], screen,
-                     meas.bt_mage['text'],
                      path=meas.bt_mage['path_white'],
                      image_ofset=meas.bt_class_active['image_offset'],
                      border_radius=meas.bt_class_active['border_radius'])
@@ -89,7 +86,6 @@ def CreateCharacter(screen, mainClock):
     bt_mage_inactive = Button(meas.bt_class_inactive['color'],
                      meas.bt_mage['x'], meas.bt_mage['y'],
                      meas.bt_mage['width'], meas.bt_mage['height'], screen,
-                     meas.bt_mage['text'],
                      path=meas.bt_mage['path_gray'],
                      image_ofset=meas.bt_class_inactive['image_offset'],
                      border_radius=meas.bt_class_inactive['border_radius'])
@@ -97,7 +93,6 @@ def CreateCharacter(screen, mainClock):
     bt_archer_active = Button(meas.bt_class_active['color'],
                        meas.bt_archer['x'], meas.bt_archer['y'],
                        meas.bt_archer['width'], meas.bt_archer['height'], screen,
-                       meas.bt_archer['text'],
                        path=meas.bt_archer['path_white'],
                        image_ofset=meas.bt_class_active['image_offset'],
                        border_radius=meas.bt_class_active['border_radius'])
@@ -105,7 +100,6 @@ def CreateCharacter(screen, mainClock):
     bt_archer_inactive = Button(meas.bt_class_inactive['color'],
                        meas.bt_archer['x'], meas.bt_archer['y'],
                        meas.bt_archer['width'], meas.bt_archer['height'], screen,
-                       meas.bt_archer['text'],
                        path=meas.bt_archer['path_gray'],
                        image_ofset=meas.bt_class_inactive['image_offset'],
                        border_radius=meas.bt_class_inactive['border_radius'])

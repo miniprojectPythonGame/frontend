@@ -14,7 +14,7 @@ def setPath(path):
 
 class ItemBox:
     def __init__(self, x, y, width, height, screen, color=pygame.Color('#555555'), fill=None,
-                 path=None, border=3, offset=0, border_radius=0):
+                 path=None, border=2, offset=0, border_radius=0):
         self.x = x
         self.y = y
         self.width = width

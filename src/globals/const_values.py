@@ -10,12 +10,15 @@ SIZE_FACTOR = 0.6
 
 # FONTS
 # TITLE_FONT = pygame.font.SysFont('calibri', 100)
-TITLE_FONT = pygame.font.Font(None, 100)
-HEADER_PRIMARY_FONT = pygame.font.Font(None, 60)
-HEADER_SECONDARY_FONT = pygame.font.Font(None, 40)
-HEADER_TERTIARY_FONT = pygame.font.Font(None, 28)
-TEXT_FONT = pygame.font.Font(None, 23)
-INPUT_FONT = pygame.font.Font(None, 30)
+FONT = None
+TITLE_FONT = pygame.font.Font(FONT, 100)
+HEADER_PRIMARY_FONT = pygame.font.Font(FONT, 55)
+HEADER_SECONDARY_FONT = pygame.font.Font(FONT, 40)
+HEADER_TERTIARY_FONT = pygame.font.Font(FONT, 30)
+TEXT_FONT = pygame.font.Font(FONT, 23)
+INPUT_FONT = pygame.font.Font(FONT, 30)
+LIST_TITLE_FONT = pygame.font.Font(FONT, 32)
+LIST_SUBTITLE_FONT = pygame.font.Font(FONT, 25)
 
 # ACCOUNT PROPERTIES
 NICKNAME_LENGTH = 18

@@ -14,6 +14,7 @@ class Button():
         self.screen = screen
         self.text = text
         self.font = font
+        self.path = path
         self.image = self.makeImage(path, image_ofset)
         self.rect = pygame.Rect(x, y, width, height)
         self.border = border
