@@ -11,7 +11,7 @@
 - [ ] marketplace
 - [ ] arena list
 - [ ] fight (arena, quest)
-- [ ] shop (armor, magic, weapon)
+- [x] ~~shop (armor, magic, weapon)~~
 - [x] ~~character window~~
 - [ ] choose quest
 - [ ] quest dialog
