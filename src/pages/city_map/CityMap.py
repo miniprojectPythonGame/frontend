@@ -23,23 +23,41 @@ def CityMap(screen, mainClock):
                          meas.img_map['width'], meas.img_map['height'],
                          meas.img_map['img_path'], screen)
 
-    bt_marketplace = Button(meas.default_color, 220, 140, 100, 30, screen,
-                            text='Marketplace', font=meas.text_font, border_radius=5)
+    bt_marketplace = Button(meas.bt_marketplace['color'],
+                            meas.bt_marketplace['x'], meas.bt_marketplace['y'],
+                            meas.bt_marketplace['width'], meas.bt_marketplace['height'],
+                            screen, text=meas.bt_marketplace['text'],
+                            font=meas.bt_marketplace['font'], border_radius=meas.bt_marketplace['border_radius'])
 
-    bt_arena = Button(meas.default_color, 300, 200, 80, 30, screen,
-                      text='Arena', font=meas.text_font, border_radius=5)
+    bt_arena = Button(meas.bt_arena['color'],
+                            meas.bt_arena['x'], meas.bt_arena['y'],
+                            meas.bt_arena['width'], meas.bt_arena['height'],
+                            screen, text=meas.bt_arena['text'],
+                            font=meas.bt_arena['font'], border_radius=meas.bt_arena['border_radius'])
 
-    bt_weaponShop = Button(meas.default_color, 150, 250, 110, 30, screen,
-                           text='Weapon Shop', font=meas.text_font, border_radius=5)
+    bt_weaponShop = Button(meas.bt_weaponShop['color'],
+                            meas.bt_weaponShop['x'], meas.bt_weaponShop['y'],
+                            meas.bt_weaponShop['width'], meas.bt_weaponShop['height'],
+                            screen, text=meas.bt_weaponShop['text'],
+                            font=meas.bt_weaponShop['font'], border_radius=meas.bt_weaponShop['border_radius'])
 
-    bt_magicShop = Button(meas.default_color, 400, 350, 100, 30, screen,
-                          text='Magic Shop', font=meas.text_font, border_radius=5)
+    bt_magicShop = Button(meas.bt_magicShop['color'],
+                            meas.bt_magicShop['x'], meas.bt_magicShop['y'],
+                            meas.bt_magicShop['width'], meas.bt_magicShop['height'],
+                            screen, text=meas.bt_magicShop['text'],
+                            font=meas.bt_magicShop['font'], border_radius=meas.bt_magicShop['border_radius'])
 
-    bt_armorShop = Button(meas.default_color, 500, 450, 100, 30, screen,
-                          text='Armor Shop', font=meas.text_font, border_radius=5)
+    bt_armorShop = Button(meas.bt_armorShop['color'],
+                            meas.bt_armorShop['x'], meas.bt_armorShop['y'],
+                            meas.bt_armorShop['width'], meas.bt_armorShop['height'],
+                            screen, text=meas.bt_armorShop['text'],
+                            font=meas.bt_armorShop['font'], border_radius=meas.bt_armorShop['border_radius'])
 
-    bt_tavern = Button(meas.default_color, 600, 200, 80, 30, screen,
-                       text='Tavern', font=meas.text_font, border_radius=5)
+    bt_tavern = Button(meas.bt_tavern['color'],
+                            meas.bt_tavern['x'], meas.bt_tavern['y'],
+                            meas.bt_tavern['width'], meas.bt_tavern['height'],
+                            screen, text=meas.bt_tavern['text'],
+                            font=meas.bt_tavern['font'], border_radius=meas.bt_tavern['border_radius'])
 
     displayedContent = [
         img_map,

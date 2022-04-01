@@ -36,4 +36,74 @@ class Measurements:
         "img_path": '../images/map.jpg',
     }
 
+    # BUTTON: Go to marketplace
+    bt_marketplace = {
+        "color": default_color,
+        "x": 220,
+        "y": 140,
+        "width": 100,
+        "height": 30,
+        "text": 'Marketplace',
+        "font": text_font,
+        "border_radius": 5,
+    }
 
+    # BUTTON: Go to arena
+    bt_arena = {
+        "color": default_color,
+        "x": 300,
+        "y": 200,
+        "width": 80,
+        "height": 30,
+        "text": 'Arena',
+        "font": text_font,
+        "border_radius": 5,
+    }
+
+    # BUTTON: Go to weaponShop
+    bt_weaponShop = {
+        "color": default_color,
+        "x": 150,
+        "y": 250,
+        "width": 110,
+        "height": 30,
+        "text": 'Weapon Shop',
+        "font": text_font,
+        "border_radius": 5,
+    }
+
+    # BUTTON: Go to magicShop
+    bt_magicShop = {
+        "color": default_color,
+        "x": 400,
+        "y": 350,
+        "width": 100,
+        "height": 30,
+        "text": 'Magic Shop',
+        "font": text_font,
+        "border_radius": 5,
+    }
+
+    # BUTTON: Go to armorShop
+    bt_armorShop = {
+        "color": default_color,
+        "x": 500,
+        "y": 450,
+        "width": 100,
+        "height": 30,
+        "text": 'Armor Shop',
+        "font": text_font,
+        "border_radius": 5,
+    }
+
+    # BUTTON: Go to tavern
+    bt_tavern = {
+        "color": default_color,
+        "x": 600,
+        "y": 200,
+        "width": 80,
+        "height": 30,
+        "text": 'Tavern',
+        "font": text_font,
+        "border_radius": 5,
+    }
