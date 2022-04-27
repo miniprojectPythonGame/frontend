@@ -29,6 +29,8 @@ class Measurements:
     # FONTS: colors
     text_color = pygame.Color('gray26')
 
+    border = 1
+
     # left -> right
     # IMAGE: graphic
     graphic = {
@@ -69,7 +71,7 @@ class Measurements:
     # INPUT: Nickname
     input_nick = {
         "padding": 5,
-        "border": 2,
+        "border": border,
         "color": ColorSchemes(),
         "x": graphic['width'] + margin,
         "y": margin + 110,
@@ -80,7 +82,7 @@ class Measurements:
     # INPUT: Password
     input_pass = {
         "padding": 5,
-        "border": 2,
+        "border": border,
         "color": ColorSchemes(),
         "x": graphic['width'] + margin,
         "y": margin + 190,
@@ -95,7 +97,7 @@ class Measurements:
         "y": margin + 258,
         "width": 30,
         "height": 30,
-        "border": 2,
+        "border": border,
     }
 
     # Label: remember me

@@ -18,6 +18,7 @@ from src.pages.quests.Tavern import Tavern
 def CityMap(screen, mainClock):
 
     showHand = False
+    running = True
 
     img_map = ImageField(meas.img_map['x'], meas.img_map['y'],
                          meas.img_map['width'], meas.img_map['height'],
@@ -66,7 +67,7 @@ def CityMap(screen, mainClock):
 
     navbar = Navbar(screen)
 
-    while True:
+    while running:
         screen.fill((255, 255, 255))
         if showHand:
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
@@ -129,6 +130,12 @@ def CityMap(screen, mainClock):
                     if navbar.bt_settings.rect.collidepoint(event.pos):
                         print("Redirecting: CityMap.py -> Settings.py")
                         Settings(screen, mainClock)
+
+                    # LOGOUT
+                    if navbar.bt_logout.rect.collidepoint(event.pos):
+                        print("Logout: CityMap.py -> ChooseCharacter.py")
+                        running = False
+
 
                     # HANDLE CITY PLACES
                     if bt_armorShop.rect.collidepoint(event.pos):

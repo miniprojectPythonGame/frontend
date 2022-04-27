@@ -19,37 +19,68 @@ character_2 = {
         "gloves": None,
         "boots": None,
         "necklace": None,
-        "belt": None,
+        "belt": {
+            "name": 'Leather Belt',
+            "img_path": '../images/items/armor/belt.png',
+            "type": 'common',
+        },
         "ring": None,
         "artefact": None,
     },
-    "backpack": [
-        {
-            "name": 'Cool club',
-            "img_path": '../images/items/weapons/club.png',
-            "type": 'legendary',
-        },
-        {
-            "name": 'Pretty ok hammer',
-            "img_path": '../images/items/weapons/hammer.png',
-            "type": 'epic',
-        },
-        {
-            "name": 'Meh dagger',
-            "img_path": '../images/items/weapons/dagger.png',
-            "type": 'common',
-        },
-        {
-            "name": 'I guess it is an ax',
-            "img_path": '../images/items/weapons/ax.png',
-            "type": 'common',
-        },
-        {
-            "name": 'Just health potion',
-            "img_path": '../images/items/magic/potion.png',
-            "type": 'common',
-        },
+    "backpacks": [
+        [
+            {
+                "name": 'Cool club',
+                "img_path": '../images/items/weapons/club.png',
+                "type": 'legendary',
+            },
+            {
+                "name": 'Pretty ok hammer',
+                "img_path": '../images/items/weapons/hammer.png',
+                "type": 'epic',
+            },
+            {
+                "name": 'Meh dagger',
+                "img_path": '../images/items/weapons/dagger.png',
+                "type": 'common',
+            },
+            {
+                "name": 'I guess it is an ax',
+                "img_path": '../images/items/weapons/ax.png',
+                "type": 'common',
+            },
+            {
+                "name": 'Just health potion',
+                "img_path": '../images/items/magic/potion.png',
+                "type": 'common',
+            },
+            {
+                "name": 'Dragonscale Belt',
+                "img_path": '../images/items/armor/belt.png',
+                "type": 'legendary',
+            },
+        ],
+        [
+            {
+                "name": 'Ok club',
+                "img_path": '../images/items/weapons/club.png',
+                "type": 'common',
+            },
+        ]
     ],
+    "statistics": {
+        "strength": 11,
+        "intelligence": 170,
+        "dexterity": 56,
+        "constitution": 4,
+        "luck": 21,
+        "protection": 40,
+        "hp": 400,
+        "persuasion": 64,
+        "trade": 39,
+        "leadership": 100,
+        "initiative": 86,
+    }
 }
 
 createNew = {

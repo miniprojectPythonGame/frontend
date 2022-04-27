@@ -54,6 +54,8 @@ class Measurements:
         'color': text_color,
     }
 
+    bt_return = BT_RETURN
+
     # RIGHT PANEL
     # IMAGE: Avatar preview
     cp_createdCharacter = {

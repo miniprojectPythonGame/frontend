@@ -58,6 +58,16 @@ bt_world_map = {
     "path": '../images/icons/map_white.png',
 }
 
+# BUTTON: Logout
+bt_logout = {
+    "color": ColorSchemes(),
+    "x": navbar_padding_hori,
+    "y": navbar_height - (navbar_padding_vert + buttons_size),
+    "width": buttons_size,
+    "height": buttons_size,
+    "path": '../images/icons/logout.png',
+}
+
 
 class Navbar():
     def __init__(self, screen):
@@ -78,9 +88,13 @@ class Navbar():
         self.bt_world_map = Button(bt_world_map['color'], bt_world_map['x'], bt_world_map['y'],
                                    bt_world_map['width'], bt_world_map['height'], self.screen,
                                    path=bt_world_map['path'])
+        self.bt_logout = Button(bt_logout['color'], bt_logout['x'], bt_logout['y'],
+                                   bt_logout['width'], bt_logout['height'], self.screen,
+                                   path=bt_logout['path'])
 
     def draw(self):
         pygame.draw.rect(self.screen, self.color, self.rect)
         self.bt_profile.draw()
         self.bt_settings.draw()
         self.bt_world_map.draw()
+        self.bt_logout.draw()
