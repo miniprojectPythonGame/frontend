@@ -107,3 +107,15 @@ class Measurements:
         "font": input_font,
         "path": '../images/icons/right.png',
     }
+
+    # BUTTON: Login
+    bt_delete = {
+        "color": ColorSchemes(active='#63110d',
+                              inactive='#2e0806',
+                              text_secondary_color='#ffffff'),
+        "x": cp_main['x'],
+        "y": cp_main['y'] + cp_main['height'] + 100,
+        "width": cp_main['width'],
+        "height": 40,
+        "text": 'Delete',
+    }

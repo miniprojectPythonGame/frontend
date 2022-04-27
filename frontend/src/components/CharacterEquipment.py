@@ -20,6 +20,21 @@ class CharacterEquipment:
         for key in self.character:
             self.character[key].draw()
 
+    def getColor(self, object):
+        fill_colors = ColorSchemes()
+
+        if object is None:
+            return None
+
+        if object['type'] == 'legendary':
+            return fill_colors.legendary
+
+        if object['type'] == "epic":
+            return fill_colors.epic
+
+        if object['type'] == "common":
+            return fill_colors.common
+
     def initateEquipment(self):
         # CONST SIZE RELATIONS
         itembox_size = 110
@@ -28,6 +43,7 @@ class CharacterEquipment:
         itembox_border_radius = 5
         property_bar_height = 30
         avatar_size_factor = 0.7
+
         avatar_width = round(AVATAR_FULL_WIDTH * avatar_size_factor)
         avatar_height = round(AVATAR_FULL_HEIGHT * avatar_size_factor)
 
@@ -85,7 +101,9 @@ class CharacterEquipment:
                           y + itembox_padding,  # y
                           itembox_size, itembox_size, self.screen,
                           path=EQ_PLACEHOLDERS['belt'], offset=itembox_offset,
-                          border_radius=itembox_border_radius)
+                          fill=self.getColor(self.character_ref['eq']['belt']),
+                          border_radius=itembox_border_radius,
+                          isActive=False)
 
         ib_necklace = ItemBox(x + 2 * itembox_padding + itembox_size + avatar_width,  # x,
                               y + 2 * itembox_padding + itembox_size,  # y

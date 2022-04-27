@@ -49,6 +49,10 @@ def CreateCharacter(screen, mainClock):
     label_page = Label(meas.label_page['text'], meas.label_page['font'], meas.label_page['color'], screen,
                        meas.label_page['x'], meas.label_page['y'], meas.label_page['anchor'])
 
+    bt_return = Button(meas.bt_return['color'], meas.bt_return['x'], meas.bt_return['y'],
+                       meas.bt_return['width'], meas.bt_return['height'], screen,
+                       path=meas.bt_return['path'])
+
     # NAME SECTION
     label_name = Label(meas.label_name['text'], meas.label_name['font'], meas.label_name['color'], screen,
                        meas.label_name['x'], meas.label_name['y'], meas.label_name['anchor'])
@@ -118,7 +122,7 @@ def CreateCharacter(screen, mainClock):
         pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
 
         label_page.draw()
-
+        bt_return.draw()
         label_name.draw()
         input_name.draw()
 
@@ -196,6 +200,11 @@ def CreateCharacter(screen, mainClock):
                         curr_avatarImage = image.path
 
                 if bt_create.rect.collidepoint(event.pos):
+                    running = False
+                    print("Redirecting: CreateCharacter.py -> ChooseCharacter.py")
+
+                # HANDLE RETURN BUTTON
+                if bt_return.rect.collidepoint(event.pos):
                     running = False
                     print("Redirecting: CreateCharacter.py -> ChooseCharacter.py")
 

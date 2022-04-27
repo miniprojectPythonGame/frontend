@@ -16,6 +16,9 @@ from frontend.src.pages.city_map.CityMap import CityMap
 
 
 def ChooseCharacter(screen, mainClock):
+
+    running = True
+
     label_page = Label(meas.label_page['text'], meas.label_page['font'], meas.label_page['color'], screen,
                        meas.label_page['x'], meas.label_page['y'], meas.label_page['anchor'])
 
@@ -29,7 +32,12 @@ def ChooseCharacter(screen, mainClock):
                      meas.bt_next['width'], meas.bt_next['height'], screen,
                      meas.bt_next['text'], meas.bt_next['font'], path=meas.bt_next['path'])
 
-    while True:
+    bt_delete = Button(meas.bt_delete['color'], meas.bt_delete['x'], meas.bt_delete['y'],
+                      meas.bt_delete['width'], meas.bt_delete['height'], screen,
+                      meas.bt_delete['text'], meas.input_font)
+
+
+    while running:
         screen.fill((255, 255, 255))
 
         label_page.draw()
@@ -37,6 +45,7 @@ def ChooseCharacter(screen, mainClock):
 
         bt_prev.draw()
         bt_next.draw()
+        bt_delete.draw()
 
         mx, my = pygame.mouse.get_pos()
 
@@ -45,6 +54,14 @@ def ChooseCharacter(screen, mainClock):
         if characters.curr_main.rect.collidepoint((mx, my)):
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
         else:
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+
+        # Button login hover
+        if bt_delete.rect.collidepoint((mx, my)):
+            bt_delete.onHoverOn()
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        else:
+            bt_delete.onHoverOff()
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
 
         for event in pygame.event.get():
@@ -70,6 +87,8 @@ def ChooseCharacter(screen, mainClock):
                         CreateCharacter(screen, mainClock)
                     else:
                         CityMap(screen, mainClock)
+                        print("Logout: ChooseCharacter.py -> LoginPage.py")
+                        running = False
 
         pygame.display.update()
         mainClock.tick(60)

@@ -1,7 +1,7 @@
 import pygame
 
 class Checkbox():
-    def __init__(self, color, x, y, width, height, surface, border):
+    def __init__(self, color, x, y, width, height, surface, border, isSelected=False):
         self.colorSchemes = color
         self.x = x
         self.y = y
@@ -10,7 +10,7 @@ class Checkbox():
         self.surface = surface
         self.border = border
         self.rect = pygame.Rect(x, y, width, height)
-        self.isSelected = False
+        self.isSelected = isSelected
 
     def draw(self):
         if self.isSelected:

@@ -28,6 +28,9 @@ class Measurements:
 
     # FONTS: colors
     text_color = pygame.Color('gray26')
+    border = 1
+    input_height = 30
+    input_margin = 15
 
     # IMAGE: graphic
     graphic = {
@@ -67,44 +70,106 @@ class Measurements:
     # INPUT: Nickname
     input_nick = {
         "padding": 5,
-        "border": 2,
+        "border": border,
         "color": ColorSchemes(),
         "x": margin,
         "y": margin + 90,
         "width": round((SCREEN_WIDTH * SIZE_FACTOR) - (graphic['width'] + 2 * margin)),
-        "height": 50,
+        "height": input_height,
     }
 
     # INPUT: Email
     input_email = {
         "padding": 5,
-        "border": 2,
+        "border": border,
         "color": ColorSchemes(),
         "x": margin,
-        "y": margin + 160,
+        "y": input_nick['y'] + input_height + input_margin,
         "width": round((SCREEN_WIDTH * SIZE_FACTOR) - (graphic['width'] + 2 * margin)),
-        "height": 50,
+        "height": input_height,
     }
-
 
     # INPUT: Password
     input_pass = {
         "padding": 5,
-        "border": 2,
+        "border": border,
         "color": ColorSchemes(),
         "x": margin,
-        "y": margin + 230,
+        "y": input_email['y'] + input_height + input_margin,
         "width": round((SCREEN_WIDTH * SIZE_FACTOR) - (graphic['width'] + 2 * margin)),
-        "height": 50,
+        "height": input_height,
+    }
+
+    # LABEL: Sex
+    label_sex = {
+        'text': 'Sex',
+        "x": margin,
+        "y": input_pass['y'] + input_height + input_margin,
+        'anchor': 'topleft',
+    }
+
+    # LABEL: female sex
+    label_female = {
+        'text': 'female',
+        "x": margin + input_nick['width'],
+        "y": input_pass['y'] + input_height + input_margin,
+        'anchor': 'topright',
+    }
+
+    # Checkbox: male sex
+    cb_female = {
+        "color": ColorSchemes(),
+        "x": label_female['x'] - 100,
+        "y": input_pass['y'] + input_height + input_margin,
+        "width": 20,
+        "height": 20,
+        "border": border,
+    }
+
+    # LABEL: male sex
+    label_male = {
+        'text': 'male',
+        "x": cb_female['x'] - 80,
+        "y": input_pass['y'] + input_height + input_margin,
+        'anchor': 'topleft',
+    }
+
+    # Checkbox: male sex
+    cb_male = {
+        "color": ColorSchemes(),
+        "x": label_male['x'] - 30,
+        "y": input_pass['y'] + input_height + input_margin,
+        "width": 20,
+        "height": 20,
+        "border": border,
+    }
+
+    # LABEL: Age
+    label_age = {
+        'text': 'Age',
+        "x": margin,
+        "y": cb_male['y'] + input_height + input_margin,
+        'anchor': 'topleft',
+    }
+
+    # INPUT: Password
+    input_age = {
+        "padding": 5,
+        "border": border,
+        "color": ColorSchemes(),
+        "x": margin + input_nick['width'] - 211,
+        "y": label_age['y'] - 5,
+        "width": 211,
+        "height": input_height,
     }
 
     # BUTTON: Register
-    bt_login = {
+    bt_register = {
         "color": ColorSchemes(),
         "x": margin,
-        "y": margin + 305,
+        "y": margin + 310,
         "width": input_pass['width'],
-        "height": input_pass['height'],
+        "height": 50,
         "text": 'Register'
     }
 
